@@ -1,0 +1,5 @@
+XTerm*faceName : FreeMono
+XTerm*faceNameDoublesize : IPAGothic
+XTerm*faceSize : 14
+XTerm*background : black
+XTerm*foreground : white
