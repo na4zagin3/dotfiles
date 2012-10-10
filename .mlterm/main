@@ -1,0 +1,6 @@
+fontsize = 12
+use_variable_column_width = false
+use_anti_alias = true
+line_space = 1
+fg_color = white
+bg_color = black
