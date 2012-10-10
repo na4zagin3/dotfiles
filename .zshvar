@@ -1,0 +1,14 @@
+
+# [ $TERM = 'vt100' ] && export TERM='xterm'
+export PATH="/usr/local/bin:$PATH"
+export PATH="/opt/bin:$PATH"
+export PATH="/opt/x10/bin:${PATH}"
+export PATH="/opt/hadoop/bin:${PATH}"
+export PATH="/opt/android-sdk-update-manager/tools:${HOME}/bin:${PATH}"
+export PATH="${HOME}/.cabal/bin:${PATH}"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export EDITOR='vim'
+export STOW_DIR='/var/lib/stow'
+
+[ -f ~/.vars-x10 ] && source ~/.vars-x10
+[ -f ~/.zshvar-audio ] && source ~/.zshvar-audio

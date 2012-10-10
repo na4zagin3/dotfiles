@@ -1,0 +1,3 @@
+alias scrr='screen -U -D -RR'
+alias s='screen -U'
+

@@ -1,0 +1,97 @@
+#!/bin/zsh
+# vim:set fileencoding=utf-8:
+
+watch=all
+
+setopt PRINT_EXIT_VALUE
+unsetopt PROMPT_CR
+setopt PROMPT_SUBST
+
+autoload colors
+
+preexec () {
+    # Re-parse the command line
+    local -a cmd; cmd=(${(z)1})
+    #p $cmd - $cmd[1] - $cmd[1]:t - "$cmd[2,-1]"
+    local n=1
+
+    while [[ $cmd[$n] == (*=*|*env|-*|sudo) ]]; do
+        n=$[$n+1]
+    done
+    [ -n "$WINDOW" ] && screen -X title $cmd[$n]:t
+}
+
+precmd() {
+    [ -n "$WINDOW" ] && screen -X title $0:t
+    # [ $TTYIDLE -gt 10 ] && echo "\aTTYIDLE=$TTYIDLE"
+    [ $TTYIDLE -gt 10 -a $TTYIDLE -lt 86400 ] && echo "\a"
+
+    newPWD=${PWD}
+
+    local promptstr="--(%n@%m)-<%D{%m}/%D{%d}-%D{%h}:%D{%m}>---(${PWD})--"
+    promptstr=${(%)promptstr}
+    fillsize=$(( ${COLUMNS} - ${#promptstr} ))
+    if [ $fillsize -ge 0 ]
+    then
+        fill=${(l.${fillsize}..-.)}
+    else
+        fill=""
+        offset=$(( (${fillsize}*(-1)) + 4 ))
+        newPWD="..."${newPWD[${offset},-1]}
+    fi
+}
+
+termwide() {
+
+#local GRAY=$'%{\e[1;30m%}'
+#local LIGHT_GRAY=$'%{\e[0;37m%}'
+#local WHITE=$'%{\e[1;37m%}'
+#
+#local LIGHT_BLUE=$'%{\e[1;36m%}'
+#local YELLOW=$'%{\e[1;33m%}'
+#local PURPLE=$'%{\e[1;35m%}'
+#local GREEN=$'%{\e[1;32m%}'
+#local BLUE=$'%{\e[1;34m%}'
+#local RED=$'%{\e[1;31m%}'
+
+local GRAY=$'%{\e[1;30m%}'
+local LIGHT_GRAY=$'%{\e[0;37m%}'
+local WHITE=$'%{\e[1;37m%}'
+
+local LIGHT_BLUE=$'%{\e[1;36m%}'
+local YELLOW=$'%{\e[1;33m%}'
+local PURPLE=$'%{\e[1;35m%}'
+local GREEN=$'%{\e[1;32m%}'
+local BLUE=$'%{\e[1;34m%}'
+local RED=$'%{\e[1;31m%}'
+
+local MY_PROMPT_L1=$YELLOW'-'$BLUE'-('$YELLOW'%n'$LIGHT_BLUE'@'$YELLOW'%m'
+MY_PROMPT_L1="$MY_PROMPT_L1"$BLUE")-<"$YELLOW'%D{%m}'$LIGHT_BLUE'/'$YELLOW'%D{%d}'$BLUE'-'
+MY_PROMPT_L1="$MY_PROMPT_L1"$PURPLE'%D{%H}'$LIGHT_BLUE":"$PURPLE'%D{%M}'$BLUE'>-'
+MY_PROMPT_L1="$MY_PROMPT_L1"$YELLOW'-'"\${fill}"$BLUE'-('$YELLOW"\${newPWD}"$BLUE')-'$YELLOW'-'
+
+local MY_PROMPT_L2="$MY_PROMPT_L2"$YELLOW'-'$BLUE'-['
+MY_PROMPT_L2="$MY_PROMPT_L2"$RED'%(0?..=$?)'
+MY_PROMPT_L2="$MY_PROMPT_L2"$YELLOW':%h'
+MY_PROMPT_L2="$MY_PROMPT_L2"$BLUE"]"
+MY_PROMPT_L2="$MY_PROMPT_L2"$WHITE'%#'
+
+#%L: $SHLVL
+local MY_RPROMPT=$YELLOW'%(2L.S%L.)'
+#%j: # of jobs
+MY_RPROMPT="$MY_RPROMPT"$PURPLE'%(1j.j%j.)'
+MY_RPROMPT="$MY_RPROMPT"$LIGHT_BLUE"${WINDOW:+"s$WINDOW"}"
+#%l: short name of tty
+MY_RPROMPT="$MY_RPROMPT"$LIGHT_GRAY'*%l'
+
+PROMPT=$MY_PROMPT_L1$'\n'$MY_PROMPT_L2$'%{\e[0m%} '
+PROMPT2=$LIGHT_BLUE'-'$YELLOW'-'$YELLOW'-'$LIGHT_GRAY$'%{\e[0m%} '
+RPROMPT="$GREEN<$MY_RPROMPT$GREEN>"$'%{\e[0m%} '
+}
+
+termwide
+
+# Local Variables:
+# coding: utf-8
+# indent-tabs-mode: nil
+# End:

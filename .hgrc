@@ -1,0 +1,8 @@
+[ui]
+username = Sakamoto Noriaki <mrty.ityt.pt@gmail.com>
+verbose = True
+
+[extensions]
+hgext.graphlog=
+hgext.convert=
+hgk=

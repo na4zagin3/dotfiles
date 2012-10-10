@@ -1,0 +1,51 @@
+alias pd="pushd"
+alias po="popd"
+#alias cd="cd \!*; dirs"
+alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+
+alias ls="ls --color=auto"
+alias la="ls -lhAF"
+#alias la="ls -lhAF --color=auto"
+alias cl="make -f ~/Makefile clean"
+alias ps="ps -fU`whoami` --forest"
+
+#alias a2ps="a2psj"
+#alias xdvi="xdvi-ja"
+#alias xdvi="ssh -X -f paddy \xdvi"
+if [ `uname` = "FreeBSD" ]
+then
+    alias xdvi="\xdvi -page a4 -s 0"
+fi
+#alias gs="gs-ja"
+alias jman="LANG=ja_JP.utf8 \jman"
+
+#alias mo="mozilla &"
+alias v="vi"
+alias enw="emacs -nw"
+
+alias a="./a.out"
+alias x="exit"
+
+typeset -A myabbrev
+myabbrev=(
+	"|l"    "| less"
+	"|g"    "| grep"
+	"|h"	"| head"
+	"|t"	"| tail"
+	"|w"	"| wc"
+	"|s"	"| sed"
+	"|a"	"| awk"
+	"|ie"	"| iconv -t utf8 -f eucjp"
+	"|is"	"| iconv -t utf8 -f sjis"
+)
+
+my-expand-abbrev() {
+	local left prefix
+	left=$(echo -nE "$LBUFFER" | sed -e "s/[_|[:alnum:]]*$//")
+	prefix=$(echo -nE "$LBUFFER" | sed -e "s/.*[^_|[:alnum:]]\([_|[:alnum:]]*\)$/\1/")
+	LBUFFER=$left${myabbrev[$prefix]:-$prefix}" "
+}
+zle -N my-expand-abbrev
+bindkey     "^@"         my-expand-abbrev
+
+# vim: ft=zsh :

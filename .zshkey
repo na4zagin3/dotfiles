@@ -1,0 +1,8 @@
+bindkey -v
+
+bindkey -a 'q' push-line
+bindkey -a 'H' run-help
+bindkey -a '?' history-incremental-search-backward
+bindkey -a '/' history-incremental-search-forward
+
+# vim: ft=zsh :
