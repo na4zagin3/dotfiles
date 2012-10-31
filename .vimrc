@@ -387,6 +387,7 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
+syntax off
 set nocompatible
 filetype plugin indent off
 
@@ -445,6 +446,7 @@ NeoBundle 'eagletmt/unite-haddock'
 NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
+syntax on
 
 let g:neocomplcache_enable_at_startup = 1
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
