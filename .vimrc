@@ -375,40 +375,76 @@ set langmenu=ja_JP.utf-8
 " haskell mode {{{
 " use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
-
+au BufRead,BufNewFile *.hs setl expandtab
+au BufRead,BufNewFile *.lhs setl expandtab
+au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
+au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
+au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
+au BufRead,BufNewFile *.julius  setf julius | setl expandtab
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Opera/Opera.exe"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
-
 set nocompatible
-filetype off                   " (1)
+filetype plugin indent off
 
-set rtp+=~/.vim/vundle.git/    " (2)
-call vundle#rc()               " (3)
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
+endif
 
-Bundle 'VimOutliner'
-Bundle 'VOoM'
-Bundle 'WOIM.vim'
+NeoBundle 'VimOutliner'
+NeoBundle 'VOoM'
+NeoBundle 'WOIM.vim'
 
-Bundle 'CSApprox'
-Bundle 'CSApprox'
-Bundle 'hallison/vim-markdown'
-Bundle 'Modeliner'
+NeoBundle 'CSApprox'
+NeoBundle 'hallison/vim-markdown'
+NeoBundle 'Modeliner'
 
-" original repos on github
-"Bundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/neobundle.vim'
+NeoBundle 'ujihisa/unite-locate'
+" NeoBundle 'violetyk/cake.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'taglist.vim'
+NeoBundle 'ZenCoding.vim'
+NeoBundle 'ref.vim'
+NeoBundle 'The-NERD-tree'
+NeoBundle 'The-NERD-Commenter'
+NeoBundle 'fugitive.vim'
+NeoBundle 'TwitVim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-localrc'
+NeoBundle 'dbext.vim'
+" NeoBundle 'rails.vim'
+NeoBundle 'Gist.vim'
+NeoBundle 'motemen/hatena-vim'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/unite-advent_calendar'
+NeoBundle 'open-browser.vim'
+NeoBundle 'ctrlp.vim'
+NeoBundle 'jelera/vim-javascript-syntax'
 
-" vim-scripts repos
-"Bundle 'rails.vim'
+NeoBundle 'jelera/vim-javascript-syntax'
 
-" non github repos
-"Bundle 'git://git.wincent.com/command-t.git'
+" Haskell
+NeoBundle 'dag/vim2hs'
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'pbrisbin/html-template-syntax'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/unite-haddock'
 
-filetype plugin indent on     " (5)
+" Color Scheme
+NeoBundle 'altercation/vim-colors-solarized'
 
-syntax enable
-syntax on
+filetype plugin indent on
+
+let g:neocomplcache_enable_at_startup = 1
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
