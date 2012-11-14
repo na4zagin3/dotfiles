@@ -451,7 +451,11 @@ NeoBundle 'open-browser.vim'
 NeoBundle 'ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 
-NeoBundle 'jelera/vim-javascript-syntax'
+" Text Editing
+NeoBundle 'hsitz/VimOrganizer'
+
+" APL
+NeoBundle 'ngn/vim-apl'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
