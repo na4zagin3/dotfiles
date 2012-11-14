@@ -353,6 +353,7 @@ set runtimepath+=$PLUGINROOT/minscm
 " MinSCM }}}
 
         
+" binary {{{
 " vim -b : edit binary using xxd-format!
 "augroup Binary
 "  au!
@@ -364,7 +365,8 @@ set runtimepath+=$PLUGINROOT/minscm
 "  au BufWritePost *.bin if &bin | silent %!xxd -g 1
 "  au BufWritePost *.bin set nomod | endif
 "augroup END
-"
+" binary }}}
+
 " encoding {{{
 set encoding=utf-8
 set fileencoding=utf-8
@@ -387,6 +389,7 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
+" bundle {{{
 syntax off
 set nocompatible
 filetype plugin indent off
@@ -449,4 +452,5 @@ filetype plugin indent on
 syntax on
 
 let g:neocomplcache_enable_at_startup = 1
+" bundle }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
