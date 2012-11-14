@@ -3,8 +3,14 @@ alias po="popd"
 #alias cd="cd \!*; dirs"
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 
-alias ls="ls --color=auto"
-alias la="ls -lhAF"
+if [ `uname` != "FreeBSD" -a `uname` != "Darwin" ]
+then
+    alias ls="ls --color=auto"
+fi
+if [ `uname` = "Darwin" ]
+then
+	alias la="ls -lhAFG"
+fi
 #alias la="ls -lhAF --color=auto"
 alias cl="make -f ~/Makefile clean"
 alias ps="ps -fU`whoami` --forest"
