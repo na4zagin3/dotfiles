@@ -373,7 +373,22 @@ set fileencoding=utf-8
 let &termencoding = &encoding
 set langmenu=ja_JP.utf-8
 " encoding }}}
+" TwitVim {{{
+if has("perl")
+  let twitvim_enable_perl = 1
+endif
+if has("python")
+  let twitvim_enable_python = 1
+endif
+if has("ruby")
+  let twitvim_enable_ruby = 1
+endif
+if has("tcl")
+  let twitvim_enable_tcl = 1
+endif
 
+
+" TwitVim }}}
 " haskell mode {{{
 " use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
