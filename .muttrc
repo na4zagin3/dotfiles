@@ -1,0 +1,74 @@
+# 名前, アドレス
+set realname="Sakamoto Noriaki"
+set from="mrty.ityt.pt@gmail.com"
+
+# メールエディタ指定
+set editor="vim -c 'set syntax=mail ft=mail enc=utf-8'"
+
+# ヘッダの編集を可能にする
+set edit_headers=yes
+
+# 転送時のSubjectの形式を設定する
+set forw_format="Fwd: %s"
+
+# シグネチャ
+set signature=~/.mutt/.signature
+
+# メールボックス
+set spoolfile="$HOME/Maildir/"
+set folder="$HOME/Maildir/" #'+'が$folderのエイリアス
+set mbox="+inbox" # '>'が$mboxのエイリアス
+set record="+sent" # '<'が$recordのエイリアス
+set postponed="+postponed"
+set mbox_type=Maildir
+
+# インデックスとページャ画面の設定
+set pager_index_lines=10
+set tilde=yes
+
+# 送信用プログラム
+#set sendmail="/opt/local/bin/msmtp"
+set sendmail="/usr/sbin/ssmtp"
+
+
+# muttを抜けるときにメッセージを表示させない
+#set nomove
+
+# 日本語表示/送信(utf8)
+set charset="utf-8"
+set send_charset="utf-8"
+
+# 未読のOldフラグを無しにする
+#set mark_old=no
+
+# Shift-gでfetchmailを呼び出す
+#macro index G !fetchmail\n
+
+# カラーシンタックス
+# pager
+color header yellow black ^(From|Subject)
+color quoted cyan black
+color signature red black
+color attachment blue black
+color body magenta black "(ftp|http)://[^ ]+" # point out URLs
+color body magenta black [-a-z_0-9.]+@[-a-z_0-9.]+  # e-mail addresses
+color search black yellow  # how to hilite search patterns in the pager
+
+# index screen
+color index white black .*
+color tree cyan black   # the thread tree in the index menu
+color indicator black brightcyan
+
+# IMAP connection settings
+set mail_check=60
+set imap_keepalive=300
+
+# IMAP account settings
+set imap_user="mrty.ityt.pt@gmail.com"
+set spoolfile="imaps://imap.gmail.com/INBOX"
+set folder="imaps://imap.gmail.com"
+set record="imaps://imap.gmail.com/[Gmail]/Sent Mail"
+set postponed="imaps://imap.gmail.com/[Gmail]/Drafts"
+set read_inc=100
+set header_cache="~/.mutt/cache/headers/"
+set message_cachedir="~/.mutt/cache/bodies/"
