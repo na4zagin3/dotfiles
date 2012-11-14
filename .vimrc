@@ -1,4 +1,4 @@
-" vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
+" vim:set ts=8 sts=2 sw=2 tw=0 fdm=marker: (この行に関しては:help modelineを参照)
 "
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
@@ -353,6 +353,7 @@ set runtimepath+=$PLUGINROOT/minscm
 " MinSCM }}}
 
         
+" binary {{{
 " vim -b : edit binary using xxd-format!
 "augroup Binary
 "  au!
@@ -364,14 +365,30 @@ set runtimepath+=$PLUGINROOT/minscm
 "  au BufWritePost *.bin if &bin | silent %!xxd -g 1
 "  au BufWritePost *.bin set nomod | endif
 "augroup END
-"
+" binary }}}
+
 " encoding {{{
 set encoding=utf-8
 set fileencoding=utf-8
 let &termencoding = &encoding
 set langmenu=ja_JP.utf-8
 " encoding }}}
+" TwitVim {{{
+if has("perl")
+  let twitvim_enable_perl = 1
+endif
+if has("python")
+  let twitvim_enable_python = 1
+endif
+if has("ruby")
+  let twitvim_enable_ruby = 1
+endif
+if has("tcl")
+  let twitvim_enable_tcl = 1
+endif
 
+
+" TwitVim }}}
 " haskell mode {{{
 " use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
@@ -387,6 +404,8 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
+" bundle {{{
+syntax off
 set nocompatible
 filetype plugin indent off
 
@@ -432,7 +451,11 @@ NeoBundle 'open-browser.vim'
 NeoBundle 'ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
 
-NeoBundle 'jelera/vim-javascript-syntax'
+" Text Editing
+NeoBundle 'hsitz/VimOrganizer'
+
+" APL
+NeoBundle 'ngn/vim-apl'
 
 " Haskell
 NeoBundle 'dag/vim2hs'
@@ -445,6 +468,8 @@ NeoBundle 'eagletmt/unite-haddock'
 NeoBundle 'altercation/vim-colors-solarized'
 
 filetype plugin indent on
+syntax on
 
 let g:neocomplcache_enable_at_startup = 1
+" bundle }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
