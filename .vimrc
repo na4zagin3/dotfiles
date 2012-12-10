@@ -478,4 +478,16 @@ syntax on
 
 let g:neocomplcache_enable_at_startup = 1
 " bundle }}}
+" VimOrganizer {{{
+let g:org_command_for_emacsclient ='emacsclient'
+let g:org_agenda_select_dirs=["~/org"]
+augroup MyVimOrganizer
+  autocmd!
+  autocmd BufNewFile,BufRead *.org setfiletype org
+  autocmd FileType org :noremap <silent> <buffer> <localleader>a* :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','')<cr>
+  autocmd FileType org :noremap <silent> <buffer> <localleader>aa :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+ANY_TODO')<cr>
+  autocmd FileType org :noremap <silent> <buffer> <localleader>at :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+UNFINISHED_TODOS')<cr>
+  autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
+augroup END
+" VimOrganizer }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
