@@ -312,9 +312,9 @@ let MyGrep_ShellEncoding = 'utf-8'
 " QFixGrep }}}
 
 " calendar.vim {{{
-noremap <silent> <space>tc :execute(bufnr("^__Calendar$")!=-1?"bwipeout ".bufnr("^__Calendar$"): "Calendar")<cr>
-let calendar_action = "QFixHowmCalendarDiary"
-let calendar_sign   = "QFixHowmCalendarSign"
+"noremap <silent> <space>tc :execute(bufnr("^__Calendar$")!=-1?"bwipeout ".bufnr("^__Calendar$"): "Calendar")<cr>
+"let calendar_action = "QFixHowmCalendarDiary"
+"let calendar_sign   = "QFixHowmCalendarSign"
 " calendar.vim }}}
 
 " FuzzyFinder {{{
