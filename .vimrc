@@ -230,8 +230,8 @@ augroup MyGroup
   autocmd FileType c,c++,c# :set shiftwidth=4
   " schemeをgaucheに
   autocmd FileType scheme :let is_gauche=1
-  autocmd Bufenter *.tup setlocal filetype=tup
-  autocmd Bufenter Tupfile setlocal filetype=tup
+  autocmd BufNewFile,BufRead *.tup :setfiletype tup
+  autocmd BufNewFile,BufRead Tupfile :setfiletype tup
 augroup END
 " FileType }}}
 
