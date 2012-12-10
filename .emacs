@@ -125,3 +125,25 @@
 ;; scala mode applied to X10 files
 ;(add-to-list 'load-path (expand-file-name "~/.emacs.d/x10-mode"))
 ;(require 'x10-mode-auto)
+
+(require 'org-install)
+(setq org-directory "~/org")                            ; orgディレクトリ
+(setq org-todo-keywords '((type "TODO(t)" "STARTED(s)" "WAITING(w)" "APPT(a)" "|" "DONE(d)" "CANCELLED(c)" "DEFERRED(f)")))
+(setq org-mobile-directory "~/Dropbox/mobileorg")       ; MobileOrg用ディレクトリ
+
+(setq org-tag-alist '(("ANY" . ?a) ("HOME" . ?h) ("WORK" . ?w) ("OUTGO" . ?o)))
+;; (setq org-agenda-files (list org-directory))
+(defun vimorg-tag-adjust ()
+  (interactive)
+   (while (re-search-forward "^*.*?\n[ \t]+:[^ \t]+:" nil t)
+         (if (not (string-match "\\(PROPERTIES\\|LOGBOOK\\)" (thing-at-point 'line)))
+              (join-line))))
+
+(defun vimorg-set-unmodified ()
+    (interactive)
+    (set-buffer-modified-p nil))
+
+(add-hook 'org-mode-hook
+(lambda () (interactive)(replace-regexp "\\(\\s-*\\):\\(DEADLINE\\|CLOSED\\|SCHEDULED\\|CLOCK\\|<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)" "\\1\\2")
+                (beginning-of-buffer)(vimorg-tag-adjust)
+        (beginning-of-buffer) ))
