@@ -414,10 +414,6 @@ if has('vim_starting')
   call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
-NeoBundle 'VimOutliner'
-NeoBundle 'VOoM'
-NeoBundle 'WOIM.vim'
-
 NeoBundle 'CSApprox'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'Modeliner'
@@ -450,9 +446,19 @@ NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'open-browser.vim'
 NeoBundle 'ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'calendar.vim--Matsumoto'
 
 " Text Editing
 NeoBundle 'hsitz/VimOrganizer'
+NeoBundle 'fuenor/qfixhowm'
+NeoBundle 'fuenor/qfixgrep'
+
+NeoBundle 'VimOutliner'
+NeoBundle 'VOoM'
+NeoBundle 'WOIM.vim'
+
+" Buffer
+NeoBundle 'NrrwRgn'
 
 " APL
 NeoBundle 'ngn/vim-apl'
