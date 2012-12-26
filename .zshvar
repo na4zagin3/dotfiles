@@ -6,8 +6,10 @@ export PATH="/opt/x10/bin:${PATH}"
 export PATH="/opt/hadoop/bin:${PATH}"
 export PATH="/opt/android-sdk-update-manager/tools:${HOME}/bin:${PATH}"
 export PATH="${HOME}/.cabal/bin:${PATH}"
+export PATH="${HOME}/usr/bin:${PATH}"
 [ `uname` = "Darwin" ] && export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
 export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
 export EDITOR='vim'
 export STOW_DIR='/var/lib/stow'
 
