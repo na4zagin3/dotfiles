@@ -83,6 +83,7 @@ MY_RPROMPT="$MY_RPROMPT"$PURPLE'%(1j.j%j.)'
 MY_RPROMPT="$MY_RPROMPT"$LIGHT_BLUE"${WINDOW:+"s$WINDOW"}"
 #%l: short name of tty
 MY_RPROMPT="$MY_RPROMPT"$LIGHT_GRAY'*%l'
+[[ $RPROMPT_MESSAGE != "" ]] && MY_RPROMPT="$MY_RPROMPT$WHITE\"$RPROMPT_MESSAGE\""
 
 PROMPT=$MY_PROMPT_L1$'\n'$MY_PROMPT_L2$'%{\e[0m%} '
 PROMPT2=$LIGHT_BLUE'-'$YELLOW'-'$YELLOW'-'$LIGHT_GRAY$'%{\e[0m%} '
@@ -91,6 +92,10 @@ RPROMPT="$GREEN<$MY_RPROMPT$GREEN>"$'%{\e[0m%} '
 
 termwide
 
+prompt_remainder () {
+	RPROMPT_MESSAGE="$1"
+	termwide
+}
 # Local Variables:
 # coding: utf-8
 # indent-tabs-mode: nil
