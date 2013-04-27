@@ -1,4 +1,4 @@
 if [ "x$SSH_CLIENT" != 'x' ] ; then
-export PULSE_SERVER="tcp:localhost:24713"
+#export PULSE_SERVER="tcp:localhost:24713"
 export ALSA_PCM_NAME=pulse
 fi  
