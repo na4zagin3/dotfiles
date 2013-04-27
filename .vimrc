@@ -161,7 +161,6 @@ set title
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
 "colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
 "colorscheme torte " (Windows用gvim使用時はgvimrcを編集すること)
-colorscheme vo_dark
 " nogui-config }}}
 
 "---------------------------------------------------------------------------
@@ -491,4 +490,8 @@ augroup MyVimOrganizer
   autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
 augroup END
 " VimOrganizer }}}
+" {{{ config
+set background=dark
+colorscheme koehler
+" }}} config
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
