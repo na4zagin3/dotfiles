@@ -419,6 +419,7 @@ NeoBundle 'CSApprox'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'Modeliner'
 
+NeoBundle 'Shougo/vinarise'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
