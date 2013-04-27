@@ -392,8 +392,9 @@ endif
 " haskell mode {{{
 " use ghc functionality for haskell files
 au Bufenter *.hs compiler ghc
-au BufRead,BufNewFile *.hs setl expandtab
-au BufRead,BufNewFile *.lhs setl expandtab
+au BufRead,BufNewFile *.hs setl sw=2 expandtab
+au BufRead,BufNewFile *.lhs setl sw=2 expandtab
+au BufWritePost *.hs :GhcModCheckAndLintAsync
 au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
 au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
 au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
