@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 11-Nov-2010.
+" Last Change: 03-May-2013.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -270,6 +270,11 @@ augroup END
 " "    set guifontwide=Kozuka\ Gothic\ Pro-VI\ Medium\ 8
 "   endif
 " endif
+if has('mac')
+  let $PATH='/Users/mrty/.cabal/bin:'.$PATH
+  let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
+  let $PATH='/usr/local/share/npm/bin:'.$PATH
+endif
 
 " enviroment }}}
 
