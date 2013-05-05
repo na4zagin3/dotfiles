@@ -396,7 +396,7 @@ endif
 " TwitVim }}}
 " haskell mode {{{
 " use ghc functionality for haskell files
-au Bufenter *.hs compiler ghc
+" au Bufenter *.hs,*.lhs compiler ghc
 au BufRead,BufNewFile *.hs setl sw=2 expandtab
 au BufRead,BufNewFile *.lhs setl sw=2 expandtab
 au BufWritePost *.hs :GhcModCheckAndLintAsync
