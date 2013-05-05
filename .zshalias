@@ -8,6 +8,7 @@ alias pd="pushd"
 alias po="popd"
 #alias cd="cd \!*; dirs"
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias unison='unison -addversionno'
 
 if [ `uname` != "FreeBSD" -a `uname` != "Darwin" ]
 then
