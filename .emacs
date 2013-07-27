@@ -1,11 +1,16 @@
+(setq exec-path (append '("/Users/mrty/.cabal/bin" "/Users/mrty/.opam/system/bin" "/usr/local/share/npm/bin" "/usr/local/bin") exec-path))
 (setq custom-file "~/.emacscustom")
 (if (file-exists-p (expand-file-name custom-file))
     (load (expand-file-name custom-file) t nil nil))
 
-(load-file (expand-file-name "~/.emacs.d/init.el"))
+(package-initialize)
+;(package-install 'evil)
+;(package-install 'evil)
+
+;(load-file (expand-file-name "~/.emacs.d/init.el"))
 
 ;;  EVIL mode
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/evil"))
+;(add-to-list 'load-path (expand-file-name "~/.emacs.d/evil"))
 (require 'evil)
 (evil-mode 1)
 
@@ -71,7 +76,7 @@
 ;; (setq viper-inhibit-startup-message 't)
 ;; (require 'viper)
 
-(require 'w3m-load)
+(require 'w3m)
 
 ;(require 'color-theme)
 ;(color-theme-initialize)
@@ -104,7 +109,7 @@
 (show-paren-mode t)
 
 ;;Hasell Mode
-(load "/usr/share/emacs/site-lisp/haskell-mode/haskell-site-file.el")
+;(load "/usr/share/emacs/site-lisp/haskell-mode/haskell-site-file.el")
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 ;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -147,3 +152,6 @@
 (lambda () (interactive)(replace-regexp "\\(\\s-*\\):\\(DEADLINE\\|CLOSED\\|SCHEDULED\\|CLOCK\\|<[0-9]\\{4\\}-[0-9]\\{2\\}-[0-9]\\{2\\} \\)" "\\1\\2")
                 (beginning-of-buffer)(vimorg-tag-adjust)
         (beginning-of-buffer) ))
+
+;; proof general
+(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
