@@ -519,5 +519,6 @@ augroup END
 " {{{ config
 set background=dark
 colorscheme koehler
+set mouse=a
 " }}} config
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
