@@ -289,9 +289,10 @@ let howm_hidefile_regexp='\(^\|/\)\.\|[~#]$\|\.bak$\|/CVS/\|0000-00-00'
 let howm_keywordfile= QFixHowm_RootDir . '/.howm-keys'
 
 " howm-filetype {{{
-let howm_filename = '%Y/%m/+%Y-%m-%dT%H%M%S.mkd'
-let QFixHowm_FileType = ''
-let QFixHowm_Title    = '#'
+let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.mkd'
+"let QFixHowm_FileType = 'markdown.howm_memo'
+" let QFixHowm_FileType = 'markdown'
+" let QFixHowm_Title    = '#'
 
 let QFixHowm_Template_mkd = [
   \"%TITLE% %TAG%",
