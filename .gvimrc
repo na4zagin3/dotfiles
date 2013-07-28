@@ -3,7 +3,7 @@
 " An example for a Japanese version gvimrc file.
 " 日本語版のデフォルトGUI設定ファイル(gvimrc) - Vim7用試作
 "
-" Last Change: 30-Jan-2010.
+" Last Change: 30-Apr-2013.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -82,6 +82,7 @@ if has('win32')
   endif
 elseif has('mac')
   set guifont=Osaka－等幅:h14
+  set ambiwidth=single
 elseif has('xfontset')
   " UNIX用 (xfontsetを使用)
   set ambiwidth=single

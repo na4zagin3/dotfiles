@@ -8,18 +8,21 @@ alias pd="pushd"
 alias po="popd"
 #alias cd="cd \!*; dirs"
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
+alias unison='unison -addversionno'
 
 if [ `uname` != "FreeBSD" -a `uname` != "Darwin" ]
 then
     alias ls="ls --color=auto"
+	alias ps="ps -fU`whoami` --forest"
 fi
 if [ `uname` = "Darwin" ]
 then
 	alias la="ls -lhAFG"
+	alias rsync="rsync --iconv=UTF8-MAC,UTF8"
+	alias ps="ps -fU`whoami`"
 fi
 #alias la="ls -lhAF --color=auto"
 alias cl="make -f ~/Makefile clean"
-alias ps="ps -fU`whoami` --forest"
 
 #alias a2ps="a2psj"
 #alias xdvi="xdvi-ja"
