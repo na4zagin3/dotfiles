@@ -7,6 +7,8 @@ setopt autocd extendedglob
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 
+[ -f /etc/zsh/git-flow-completion.zsh ] && source /etc/zsh/git-flow-completion.zsh
+
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
