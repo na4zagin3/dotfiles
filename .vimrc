@@ -472,6 +472,9 @@ NeoBundle 'pbrisbin/html-template-syntax'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'eagletmt/unite-haddock'
 
+" JavaScript
+NeoBundle 'marijnh/tern_for_vim'
+
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
 
