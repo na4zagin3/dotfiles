@@ -253,6 +253,7 @@ augroup END
 "   set shellslash
   let $PLUGINROOT=$HOME.'/vim-plugin'
   let QFixHowm_RootDir = '~/qfixmemo'
+  let qfixmemo_chenv_dir = QFixHowm_RootDir
 
 "   if has('gui')
 "     set ambiwidth=single
@@ -322,11 +323,12 @@ let QFixHowm_RecentMode = 4
 
 " howm-chenv.vim
 "howmディレクトリの切替
-nnoremap <silent> g,hh :echo howm_dir<CR>
-nnoremap <silent> g,ha :call QFixMemoChEnv('',     'time', '=')<CR>
-nnoremap <silent> g,hm :call QFixMemoChEnv('main', 'time', '=')<CR>
-nnoremap <silent> g,hp :call QFixMemoChEnv('pc',   'time', '= [:pc]')<CR>
-nnoremap <silent> g,hw :call QFixMemoChEnv('work', 'day',  '=')<CR>
+nnoremap <silent> g,hh :echo qfixmemo_dir<CR>
+nnoremap <silent> g,ha :call QFixMemoChEnv('',         'time', '=')<CR>
+nnoremap <silent> g,hm :call QFixMemoChEnv('main',     'time', '=')<CR>
+nnoremap <silent> g,hn :call QFixMemoChEnv('main-mkd', 'time', '#')<CR>
+nnoremap <silent> g,hp :call QFixMemoChEnv('pc',       'time', '= [:pc]')<CR>
+nnoremap <silent> g,hw :call QFixMemoChEnv('work',     'day',  '=')<CR>
 " howm }}}
 
 " QFixGrep {{{
