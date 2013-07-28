@@ -337,12 +337,6 @@ let mygrepprg = 'grep'
 let MyGrep_ShellEncoding = 'utf-8'
 " QFixGrep }}}
 
-" calendar.vim {{{
-"noremap <silent> <space>tc :execute(bufnr("^__Calendar$")!=-1?"bwipeout ".bufnr("^__Calendar$"): "Calendar")<cr>
-"let calendar_action = "QFixHowmCalendarDiary"
-"let calendar_sign   = "QFixHowmCalendarSign"
-" calendar.vim }}}
-
 " FuzzyFinder {{{
         let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
         let g:FuzzyFinderOptions.Base.abbrev_map  = {
@@ -474,7 +468,6 @@ NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'open-browser.vim'
 NeoBundle 'ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'calendar.vim--Matsumoto'
 
 " Text Editing
 NeoBundle 'hsitz/VimOrganizer'
