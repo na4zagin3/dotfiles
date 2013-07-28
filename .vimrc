@@ -252,7 +252,9 @@ augroup END
 "   set makeef=
 "   set shellslash
   let $PLUGINROOT=$HOME.'/vim-plugin'
-  let howm_dir = "~/howm"
+  let QFixHowm_RootDir = '~/qfixmemo'
+  let qfixmemo_chenv_dir = QFixHowm_RootDir
+
 "   if has('gui')
 "     set ambiwidth=single
 " 
@@ -279,19 +281,29 @@ endif
 " enviroment }}}
 
 " howm {{{
-set runtimepath+=$PLUGINROOT/qfixapp
-set runtimepath+=$PLUGINROOT/chalice
 let g:howm_grepprg = 'grep'
 let g:howm_findprg = 'find'
-let howm_filename = '%Y/%m/+%Y-%m-%dT%H%M%S.howm'
 let howm_fileencoding='utf-8'
 let howm_fileformat='dos'
 let howm_hidefile_regexp='\(^\|/\)\.\|[~#]$\|\.bak$\|/CVS/\|0000-00-00'
-let howm_keywordfile=howm_dir.'/.howm-keys'
-let g:QFixHowm_FileType = 'howm-memo'
+let howm_keywordfile= QFixHowm_RootDir . '/.howm-keys'
+
+" howm-filetype {{{
+let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.mkd'
+"let QFixHowm_FileType = 'markdown.howm_memo'
+" let QFixHowm_FileType = 'markdown'
+" let QFixHowm_Title    = '#'
+
+let QFixHowm_Template_mkd = [
+  \"%TITLE% %TAG%",
+  \""
+  \]
+"mkdテンプレート(カーソル移動)
+let QFixHowm_Cmd_NewEntry_mkd = '$a'
+" howm-filetype }}}
 
 "MRUを保存するファイル
-let QFixHowm_MruFile    = howm_dir.'/.howm-mru'
+let QFixHowm_MruFile    = QFixHowm_RootDir.'/.howm-mru'
 "MRUを保存する最大数
 let QFixHowm_MruFileMax = 3000
 
@@ -309,18 +321,21 @@ elseif has('unix')
 endif
 "更新日時の形式
 let QFixHowm_RecentMode = 4
+
+" howm-chenv.vim
+"howmディレクトリの切替
+nnoremap <silent> g,hh :echo qfixmemo_dir<CR>
+nnoremap <silent> g,ha :call QFixMemoChEnv('',         'time', '=')<CR>
+nnoremap <silent> g,hm :call QFixMemoChEnv('main',     'time', '=')<CR>
+nnoremap <silent> g,hn :call QFixMemoChEnv('main-mkd', 'time', '#')<CR>
+nnoremap <silent> g,hp :call QFixMemoChEnv('pc',       'time', '= [:pc]')<CR>
+nnoremap <silent> g,hw :call QFixMemoChEnv('work',     'day',  '=')<CR>
 " howm }}}
 
 " QFixGrep {{{
 let mygrepprg = 'grep'
 let MyGrep_ShellEncoding = 'utf-8'
 " QFixGrep }}}
-
-" calendar.vim {{{
-"noremap <silent> <space>tc :execute(bufnr("^__Calendar$")!=-1?"bwipeout ".bufnr("^__Calendar$"): "Calendar")<cr>
-"let calendar_action = "QFixHowmCalendarDiary"
-"let calendar_sign   = "QFixHowmCalendarSign"
-" calendar.vim }}}
 
 " FuzzyFinder {{{
         let g:FuzzyFinderOptions = { 'Base':{}, 'Buffer':{}, 'File':{}, 'Dir':{}, 'MruFile':{}, 'MruCmd':{}, 'Bookmark':{}, 'Tag':{}, 'TaggedFile':{}}
@@ -453,12 +468,12 @@ NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'open-browser.vim'
 NeoBundle 'ctrlp.vim'
 NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'calendar.vim--Matsumoto'
 
 " Text Editing
 NeoBundle 'hsitz/VimOrganizer'
 NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'fuenor/qfixgrep'
+NeoBundle 'osyo-manga/unite-qfixhowm'
 
 NeoBundle 'VimOutliner'
 NeoBundle 'VOoM'
