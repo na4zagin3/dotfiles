@@ -420,6 +420,9 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
+" pandoc {{{
+let g:pandoc_bibfiles=["$BIBLIO_DIR/library.bib"]
+" pandoc }}}
 " bundle {{{
 syntax off
 set nocompatible
@@ -432,6 +435,7 @@ endif
 
 NeoBundle 'CSApprox'
 NeoBundle 'hallison/vim-markdown'
+NeoBundle 'vim-pandoc/vim-pandoc'
 NeoBundle 'Modeliner'
 
 NeoBundle 'Shougo/vinarise'
