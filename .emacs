@@ -13,6 +13,7 @@
 
 ;;  EVIL mode
 ;(add-to-list 'load-path (expand-file-name "~/.emacs.d/evil"))
+(require 'undo-tree)
 (require 'evil)
 (evil-mode 1)
 
