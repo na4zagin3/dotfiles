@@ -7,6 +7,8 @@
 ;(package-install 'evil)
 ;(package-install 'evil)
 
+(defvar darwin-p (eq system-type 'darwin))
+
 ;(load-file (expand-file-name "~/.emacs.d/init.el"))
 
 ;;  EVIL mode
