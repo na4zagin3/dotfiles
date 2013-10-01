@@ -245,15 +245,15 @@ augroup END
 "   let $PATH=$CYGWINROOT.'/bin;'.$CYGWINROOT.'/usr/local/bin;'.$PATH
 "   let $docmentpath='i:/mrty/Documents'
 "   let $PLUGINROOT=$VIM
-"   let howm_dir = "i:/howm"
+"   let qfixmemo_dir = "i:/howm"
 " elseif has('unix')
 "   set shell=bash
 "   set shellcmdflag=-c
 "   set makeef=
 "   set shellslash
   let $PLUGINROOT=$HOME.'/vim-plugin'
-  let QFixHowm_RootDir = '~/qfixmemo'
-  let qfixmemo_chenv_dir = QFixHowm_RootDir
+  let qfixmemo_chenv_dir = '~/qfixmemo'
+  let qfixmemo_dir = qfixmemo_chenv_dir
 
 "   if has('gui')
 "     set ambiwidth=single
@@ -281,52 +281,47 @@ endif
 " enviroment }}}
 
 " howm {{{
-let g:howm_grepprg = 'grep'
-let g:howm_findprg = 'find'
-let howm_fileencoding='utf-8'
-let howm_fileformat='dos'
-let howm_hidefile_regexp='\(^\|/\)\.\|[~#]$\|\.bak$\|/CVS/\|0000-00-00'
-let howm_keywordfile= QFixHowm_RootDir . '/.howm-keys'
+let g:QFixHowm_Convert = 0
+let qfixmemo_fileencoding='utf-8'
+let qfixmemo_fileformat='dos'
+let qfixmemo_keywordfile= qfixmemo_chenv_dir . '/.howm-keys'
 
 " howm-filetype {{{
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.mkd'
+"let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
+let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
 "let QFixHowm_FileType = 'markdown.howm_memo'
-" let QFixHowm_FileType = 'markdown'
-" let QFixHowm_Title    = '#'
+let QFixHowm_FileType = 'qfix_memo'
+let QFixHowm_Title    = '='
 
+let qfixmemo_template = [
+  \'%TITLE% %TAG%',
+  \'%DATE%',
+  \''
+\]
 let QFixHowm_Template_mkd = [
   \"%TITLE% %TAG%",
-  \""
-  \]
+  \"%DATE%",
+  \''
+\]
 "mkdテンプレート(カーソル移動)
 let QFixHowm_Cmd_NewEntry_mkd = '$a'
 " howm-filetype }}}
 
 "MRUを保存するファイル
-let QFixHowm_MruFile    = QFixHowm_RootDir.'/.howm-mru'
-"MRUを保存する最大数
-let QFixHowm_MruFileMax = 3000
+let QFixMRU_Filename    = qfixmemo_chenv_dir.'/.howm-mru'
+" MRUの基準ディレクトリ
+let QFixMRU_RootDir   = qfixmemo_chenv_dir
 
-"ジャンプ先の行番号を変更する
-let QFixHowm_MRU_SummaryLineMode = 1
 
-let QFixHowm_UseAutoLinkTags = 1
-"MRUを使用する/しない
-let QFixHowm_UseMRU = 1
 "URIを開くコマンド
-if has('win32')
-  let QFixHowm_OpenURIcmd = '!start "F:/Progs/Mozilla Firefox/firefox.exe" %s'
-elseif has('unix')
-  let QFixHowm_OpenURIcmd = '!firefox %s &'
-endif
-"更新日時の形式
-let QFixHowm_RecentMode = 4
+":help openuri
 
 " howm-chenv.vim
 "howmディレクトリの切替
 nnoremap <silent> g,hh :echo qfixmemo_dir<CR>
 nnoremap <silent> g,ha :call QFixMemoChEnv('',         'time', '=')<CR>
 nnoremap <silent> g,hm :call QFixMemoChEnv('main',     'time', '=')<CR>
+nnoremap <silent> g,ho :call QFixMemoChEnv('old',      'time', '=')<CR>
 nnoremap <silent> g,hn :call QFixMemoChEnv('main-mkd', 'time', '#')<CR>
 nnoremap <silent> g,hp :call QFixMemoChEnv('pc',       'time', '= [:pc]')<CR>
 nnoremap <silent> g,hw :call QFixMemoChEnv('work',     'day',  '=')<CR>
