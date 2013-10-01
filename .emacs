@@ -11,6 +11,7 @@
 
 ;;  EVIL mode
 ;(add-to-list 'load-path (expand-file-name "~/.emacs.d/evil"))
+(require 'undo-tree)
 (require 'evil)
 (evil-mode 1)
 
@@ -154,4 +155,4 @@
         (beginning-of-buffer) ))
 
 ;; proof general
-(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+;(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
