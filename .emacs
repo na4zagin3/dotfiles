@@ -156,4 +156,6 @@
         (beginning-of-buffer) ))
 
 ;; proof general
-(load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+(if darwin-p
+  (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+  (load-file "/usr/local/share/ssreflect/pg-ssr.el"))
