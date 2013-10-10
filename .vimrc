@@ -151,13 +151,15 @@ set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
 set laststatus=2
 " ステータス行の内容
-set statusline=%f%m%r%h%w\ %Y\ %{&ff}\ %{&fenc}\%=\ =\%0B\ %0l,%0v/%p%%/%L
+set statusline=%f%m%r%h%w\ %Y\ %{&ff}\ %{&fenc}\ %k\%=\ =\%0B\ %0l,%0v/%p%%/%L
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
 set cmdheight=2
 " コマンドをステータス行に表示
 set showcmd
 " タイトルを表示
 set title
+" インクリメンタルーチを有効
+set incsearch
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
 "colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
 "colorscheme torte " (Windows用gvim使用時はgvimrcを編集すること)
@@ -406,14 +408,16 @@ endif
 " TwitVim }}}
 " haskell mode {{{
 " use ghc functionality for haskell files
-" au Bufenter *.hs,*.lhs compiler ghc
-au BufRead,BufNewFile *.hs setl sw=2 expandtab
-au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-au BufWritePost *.hs :GhcModCheckAndLintAsync
-au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
-au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
-au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
-au BufRead,BufNewFile *.julius  setf julius | setl expandtab
+augroup MyHaskell
+  " au Bufenter *.hs,*.lhs compiler ghc
+  au BufRead,BufNewFile *.hs setl sw=2 expandtab
+  au BufRead,BufNewFile *.lhs setl sw=2 expandtab
+  au BufWritePost *.hs :GhcModCheckAndLintAsync
+  au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
+  au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
+  au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
+  au BufRead,BufNewFile *.julius  setf julius | setl expandtab
+augroup END
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Opera/Opera.exe"
@@ -496,6 +500,10 @@ NeoBundle 'marijnh/tern_for_vim'
 
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
+
+" Greek
+NeoBundle 'na4zagin3/pgreek.vim'
+NeoBundle 'polytonic.utf-8.spl'
 
 filetype plugin indent on
 syntax on
