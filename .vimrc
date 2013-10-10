@@ -501,6 +501,10 @@ NeoBundle 'marijnh/tern_for_vim'
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
 
+" Greek
+NeoBundle 'na4zagin3/pgreek.vim'
+NeoBundle 'polytonic.utf-8.spl'
+
 filetype plugin indent on
 syntax on
 
