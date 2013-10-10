@@ -151,7 +151,7 @@ set wrap
 " 常にステータス行を表示 (詳細は:he laststatus)
 set laststatus=2
 " ステータス行の内容
-set statusline=%f%m%r%h%w\ %Y\ %{&ff}\ %{&fenc}\%=\ =\%0B\ %0l,%0v/%p%%/%L
+set statusline=%f%m%r%h%w\ %Y\ %{&ff}\ %{&fenc}\ %k\%=\ =\%0B\ %0l,%0v/%p%%/%L
 " コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
 set cmdheight=2
 " コマンドをステータス行に表示
