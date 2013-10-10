@@ -408,14 +408,16 @@ endif
 " TwitVim }}}
 " haskell mode {{{
 " use ghc functionality for haskell files
-" au Bufenter *.hs,*.lhs compiler ghc
-au BufRead,BufNewFile *.hs setl sw=2 expandtab
-au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-au BufWritePost *.hs :GhcModCheckAndLintAsync
-au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
-au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
-au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
-au BufRead,BufNewFile *.julius  setf julius | setl expandtab
+augroup MyHaskell
+  " au Bufenter *.hs,*.lhs compiler ghc
+  au BufRead,BufNewFile *.hs setl sw=2 expandtab
+  au BufRead,BufNewFile *.lhs setl sw=2 expandtab
+  au BufWritePost *.hs :GhcModCheckAndLintAsync
+  au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
+  au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
+  au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
+  au BufRead,BufNewFile *.julius  setf julius | setl expandtab
+augroup END
 " configure browser for haskell_doc.vim
 let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Opera/Opera.exe"
