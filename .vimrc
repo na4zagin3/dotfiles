@@ -158,6 +158,8 @@ set cmdheight=2
 set showcmd
 " タイトルを表示
 set title
+" インクリメンタルーチを有効
+set incsearch
 " 画面を黒地に白にする (次行の先頭の " を削除すれば有効になる)
 "colorscheme evening " (Windows用gvim使用時はgvimrcを編集すること)
 "colorscheme torte " (Windows用gvim使用時はgvimrcを編集すること)
