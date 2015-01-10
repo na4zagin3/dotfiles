@@ -511,9 +511,14 @@ NeoBundle 'marijnh/tern_for_vim'
 " Color Scheme
 NeoBundle 'altercation/vim-colors-solarized'
 
+" Language {{{
 " Greek
 NeoBundle 'na4zagin3/pgreek.vim'
 NeoBundle 'polytonic.utf-8.spl'
+
+" Japanese
+"NeoBundle 'tyru/skk.vim'
+" Language }}}
 
 call neobundle#end()
 
