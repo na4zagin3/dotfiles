@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 03-May-2013.
+" Last Change: 10-Oct-2013.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -554,6 +554,11 @@ augroup MyVimOrganizer
   autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
 augroup END
 " VimOrganizer }}}
+" NeoComplcache {{{
+if has('mac') && has('xim')
+  let g:neocomplcache_auto_completion_start_length = 3
+endif
+" NeoComplcache }}}
 " {{{ config
 set background=dark
 colorscheme koehler
