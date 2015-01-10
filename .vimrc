@@ -426,7 +426,7 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
 " pandoc {{{
-let g:pandoc_bibfiles=["$BIBLIO_DIR/library.bib"]
+let g:pandoc_bibfiles=["$BIBLIO_DIR/computer.bib"]
 " pandoc }}}
 " bundle {{{
 syntax off
