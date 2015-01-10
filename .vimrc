@@ -463,8 +463,9 @@ filetype plugin indent off
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'CSApprox'
 NeoBundle 'hallison/vim-markdown'
@@ -533,6 +534,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 " Greek
 NeoBundle 'na4zagin3/pgreek.vim'
 NeoBundle 'polytonic.utf-8.spl'
+
+call neobundle#end()
 
 filetype plugin indent on
 syntax on
