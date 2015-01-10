@@ -419,7 +419,7 @@ augroup MyHaskell
   " au Bufenter *.hs,*.lhs compiler ghc
   au BufRead,BufNewFile *.hs setl sw=2 expandtab
   au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-  au BufWritePost *.hs :GhcModCheckAndLintAsync
+"  au BufWritePost *.hs :GhcModCheckAndLintAsync
   au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
   au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
   au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
