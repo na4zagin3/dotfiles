@@ -138,8 +138,10 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 " GUI固有ではない画面表示の設定:
 "
 " nogui-config {{{
-" 行番号を非表示 (number:表示)
+" 行番号を表示 (number:表示)
 set number
+" 相対行番号を表示 (number:表示)
+set relativenumber
 " ルーラーを表示 (noruler:非表示)
 set ruler
 " タブや改行を表示 (list:表示)
