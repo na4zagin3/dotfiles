@@ -373,6 +373,10 @@ set runtimepath+=$PLUGINROOT/minscm
 " MinSCM }}}
 
         
+" gtags {{{
+:nmap <C-\><C-]> :GtagsCursor<CR>
+" gtags }}}
+
 " binary {{{
 " vim -b : edit binary using xxd-format!
 "augroup Binary
