@@ -425,6 +425,10 @@ let g:haddock_browser = "chromium"
 "let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
 "let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
 " haskell mode }}}
+" Align {{{
+" Alignを日本語環境で使用するための設定
+let g:Align_xstrlen = 3
+" Align }}}
 " pandoc {{{
 let g:pandoc_bibfiles=["$BIBLIO_DIR/computer.bib"]
 " pandoc }}}
@@ -484,6 +488,9 @@ NeoBundle 'osyo-manga/unite-qfixhowm'
 NeoBundle 'VimOutliner'
 NeoBundle 'VOoM'
 NeoBundle 'WOIM.vim'
+
+" CSV
+NeoBundle 'Align'
 
 " Buffer
 NeoBundle 'NrrwRgn'
