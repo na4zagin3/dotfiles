@@ -138,8 +138,10 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 " GUI固有ではない画面表示の設定:
 "
 " nogui-config {{{
-" 行番号を非表示 (number:表示)
+" 行番号を表示 (number:表示)
 set number
+" 相対行番号を表示 (number:表示)
+set relativenumber
 " ルーラーを表示 (noruler:非表示)
 set ruler
 " タブや改行を表示 (list:表示)
@@ -230,6 +232,7 @@ endif
 augroup MyGroup
   autocmd!
   autocmd FileType c,c++,c# :set shiftwidth=4
+  autocmd FileType tex :set shiftwidth=4
   " schemeをgaucheに
   autocmd FileType scheme :let is_gauche=1
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
@@ -291,7 +294,7 @@ let qfixmemo_keywordfile= qfixmemo_chenv_dir . '/.howm-keys'
 
 " howm-filetype {{{
 "let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let qfixmemo_filename = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
 "let QFixHowm_FileType = 'markdown.howm_memo'
 let QFixHowm_FileType = 'qfix_memo'
 let QFixHowm_Title    = '='
@@ -371,6 +374,10 @@ set runtimepath+=$PLUGINROOT/minscm
 " MinSCM }}}
 
         
+" gtags {{{
+:nmap <C-\><C-]> :GtagsCursor<CR>
+" gtags }}}
+
 " binary {{{
 " vim -b : edit binary using xxd-format!
 "augroup Binary
@@ -413,7 +420,7 @@ augroup MyHaskell
   " au Bufenter *.hs,*.lhs compiler ghc
   au BufRead,BufNewFile *.hs setl sw=2 expandtab
   au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-  au BufWritePost *.hs :GhcModCheckAndLintAsync
+"  au BufWritePost *.hs :GhcModCheckAndLintAsync
   au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
   au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
   au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
@@ -432,6 +439,28 @@ let g:Align_xstrlen = 3
 " pandoc {{{
 let g:pandoc_bibfiles=["$BIBLIO_DIR/computer.bib"]
 " pandoc }}}
+" unite {{{
+" The prefix key.
+"nnoremap    [unite]   <Nop>
+"nmap    <Leader>f [unite]
+
+" unite.vim keymap
+" https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
+"nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+"nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+"nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+"nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+"nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+"nnoremap <silent> ,vr :UniteResume<CR>
+
+" vinarise
+let g:vinarise_enable_auto_detect = 1
+
+" unite-build map
+"nnoremap <silent> ,vb :Unite build<CR>
+"nnoremap <silent> ,vcb :Unite build:!<CR>
+"nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
+" unite }}}
 " bundle {{{
 syntax off
 set nocompatible
