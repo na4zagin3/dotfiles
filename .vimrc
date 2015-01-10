@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 10-Oct-2013.
+" Last Change: 10-Jan-2015.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -234,6 +234,7 @@ augroup MyGroup
   autocmd FileType scheme :let is_gauche=1
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
+  autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
 augroup END
 " FileType }}}
 
