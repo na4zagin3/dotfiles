@@ -293,7 +293,7 @@ let qfixmemo_keywordfile= qfixmemo_chenv_dir . '/.howm-keys'
 
 " howm-filetype {{{
 "let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.txt'
-let howm_filename = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
+let qfixmemo_filename = '%Y/%m/%Y-%m-%d-%H%M%S.howm'
 "let QFixHowm_FileType = 'markdown.howm_memo'
 let QFixHowm_FileType = 'qfix_memo'
 let QFixHowm_Title    = '='
