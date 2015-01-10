@@ -232,6 +232,7 @@ endif
 augroup MyGroup
   autocmd!
   autocmd FileType c,c++,c# :set shiftwidth=4
+  autocmd FileType tex :set shiftwidth=4
   " schemeをgaucheに
   autocmd FileType scheme :let is_gauche=1
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
