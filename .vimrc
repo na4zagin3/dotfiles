@@ -478,6 +478,7 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundle 'CSApprox'
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'vim-pandoc/vim-pandoc'
+NeoBundle 'vim-pandoc/vim-pandoc-syntax'
 NeoBundle 'Modeliner'
 
 NeoBundle 'Shougo/vinarise'
