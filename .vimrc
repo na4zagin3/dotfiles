@@ -462,12 +462,14 @@ let g:vinarise_enable_auto_detect = 1
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
 " bundle {{{
-syntax off
-set nocompatible
-filetype plugin indent off
+" syntax off
+" set nocompatible
+" filetype plugin indent off
 
 if has('vim_starting')
-  set nocompatible
+  if &compatible
+    set nocompatible
+  endif
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
@@ -552,7 +554,7 @@ NeoBundle 'polytonic.utf-8.spl'
 call neobundle#end()
 
 filetype plugin indent on
-syntax on
+" syntax on
 
 let g:neocomplcache_enable_at_startup = 1
 " bundle }}}
