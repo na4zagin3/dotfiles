@@ -238,6 +238,7 @@ augroup MyGroup
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
+  autocmd BufEnter *.md :syntax sync fromstart
 augroup END
 " FileType }}}
 
