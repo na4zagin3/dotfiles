@@ -597,43 +597,70 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
+
+" Package
+NeoBundle 'Shougo/neobundle.vim'
+
+" Colorscheme
 NeoBundle 'CSApprox'
+
+" Markdown
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'vim-pandoc/vim-pandoc'
 NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+
+" Modeline
 NeoBundle 'Modeliner'
 
+" Binary Edigor
 NeoBundle 'Shougo/vinarise'
-NeoBundle 'Shougo/neobundle.vim'
+
+" Complation
 NeoBundle 'Shougo/neocomplcache'
+
+" Libraries
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
+
+" Filer
 NeoBundle 'Shougo/vimfiler'
+
+" Shell
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neobundle.vim'
+
+" File
+" NeoBundle 'ctrlp.vim'
+
+" ???
 NeoBundle 'ujihisa/unite-locate'
 " NeoBundle 'violetyk/cake.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'taglist.vim'
-NeoBundle 'ZenCoding.vim'
 NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'fugitive.vim'
-NeoBundle 'TwitVim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
-NeoBundle 'dbext.vim'
 
+" C/C++
 NeoBundle 'justmao945/vim-clang'
 
+" DB
+" NeoBundle 'dbext.vim'
+
+" HTML
+NeoBundle 'ZenCoding.vim'
+
+" Web
+NeoBundle 'TwitVim'
 " NeoBundle 'rails.vim'
 NeoBundle 'Gist.vim'
 NeoBundle 'motemen/hatena-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/unite-advent_calendar'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'open-browser.vim'
-NeoBundle 'ctrlp.vim'
+
 NeoBundle 'jelera/vim-javascript-syntax'
 
 " Text Editing
@@ -642,12 +669,13 @@ NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'osyo-manga/unite-qfixhowm'
 
-NeoBundle 'VimOutliner'
+" NeoBundle 'VimOutliner' " It introduces smart paste, although it is not smart in Haskell source
 NeoBundle 'VOoM'
 NeoBundle 'WOIM.vim'
 
 " CSV
 NeoBundle 'Align'
+NeoBundle 'csv.vim'
 
 " Buffer
 NeoBundle 'NrrwRgn'
@@ -681,7 +709,7 @@ NeoBundle 'deton/tcvime'
 call neobundle#end()
 
 filetype plugin indent on
-" syntax on
+syntax on
 
 let g:neocomplcache_enable_at_startup = 1
 " bundle }}}
