@@ -735,4 +735,7 @@ set background=dark
 colorscheme koehler
 set mouse=a
 " }}} config
+" XML {{{
+let g:xml_syntax_folding = 1
+" XML }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
