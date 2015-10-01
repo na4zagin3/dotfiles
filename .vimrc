@@ -576,6 +576,13 @@ let g:vinarise_enable_auto_detect = 1
 "nnoremap <silent> ,vcb :Unite build:!<CR>
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
+" vim-clang {{{
+" set clang options for vim-clang
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
+" let g:clang_cpp_options = g:clang_cpp_options . ' ' . system('pkg-config libxml++-2.6 --cflags')
+let g:clang_diagsopt = 'rightbelow:6'
+" vim-clang }}}
 " bundle {{{
 " syntax off
 " set nocompatible
@@ -617,6 +624,9 @@ NeoBundle 'TwitVim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'dbext.vim'
+
+NeoBundle 'justmao945/vim-clang'
+
 " NeoBundle 'rails.vim'
 NeoBundle 'Gist.vim'
 NeoBundle 'motemen/hatena-vim'
