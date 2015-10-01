@@ -1,3 +1,6 @@
+(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+    (normal-top-level-add-subdirs-to-load-path))
+
 (setq exec-path (append '("/Users/mrty/.cabal/bin" "/Users/mrty/.opam/system/bin" "/usr/local/share/npm/bin" "/usr/local/bin") exec-path))
 (setq custom-file "~/.emacscustom")
 (if (file-exists-p (expand-file-name custom-file))
@@ -16,6 +19,7 @@
 (require 'undo-tree)
 (require 'evil)
 (evil-mode 1)
+(global-evil-tabs-mode t)
 
 ;;(require 'viper)
 ;;(viper-mode)
@@ -109,7 +113,7 @@
 ;   '(define-key scheme-mode-map "\t" 'scheme-complete-or-indent))
 ;(setq list-indent-function 'scheme-smart-indent-function)
 
-(show-paren-mode t)
+; (show-paren-mode t)
 
 ;;Hasell Mode
 ;(load "/usr/share/emacs/site-lisp/haskell-mode/haskell-site-file.el")
