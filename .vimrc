@@ -257,9 +257,15 @@ augroup END
 "   set shellcmdflag=-c
 "   set makeef=
 "   set shellslash
+if hostname() == 'geirscoegul'
+  let $PLUGINROOT=$HOME.'/vim-plugin'
+  let qfixmemo_chenv_dir = '~/Documents/qfixmemo'
+  let qfixmemo_dir = qfixmemo_chenv_dir
+else
   let $PLUGINROOT=$HOME.'/vim-plugin'
   let qfixmemo_chenv_dir = '~/qfixmemo'
   let qfixmemo_dir = qfixmemo_chenv_dir
+endif
 
 "   if has('gui')
 "     set ambiwidth=single
