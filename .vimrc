@@ -238,6 +238,7 @@ augroup MyGroup
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
+  autocmd BufEnter *.md :syntax sync fromstart
 augroup END
 " FileType }}}
 
@@ -257,9 +258,15 @@ augroup END
 "   set shellcmdflag=-c
 "   set makeef=
 "   set shellslash
+if hostname() == 'geirscoegul'
+  let $PLUGINROOT=$HOME.'/vim-plugin'
+  let qfixmemo_chenv_dir = '~/Documents/qfixmemo'
+  let qfixmemo_dir = qfixmemo_chenv_dir
+else
   let $PLUGINROOT=$HOME.'/vim-plugin'
   let qfixmemo_chenv_dir = '~/qfixmemo'
   let qfixmemo_dir = qfixmemo_chenv_dir
+endif
 
 "   if has('gui')
 "     set ambiwidth=single
@@ -283,6 +290,7 @@ if has('mac')
   let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 
 " enviroment }}}
 
@@ -440,19 +448,132 @@ let g:Align_xstrlen = 3
 " pandoc {{{
 let g:pandoc_bibfiles=["$BIBLIO_DIR/computer.bib"]
 " pandoc }}}
+" tcvime {{{
+let tcvime_enable = 1
+if tcvime_enable
+if has('keymap')
+  let tcvime_keymap = 'tutcodep'
+  set iminsert=0 imsearch=0
+  imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
+  imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
+  imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
+  " コントロールキーを伴わないモード切り替え: <Space>,でオンにする
+  imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
+  " <Space>;で後置型英字変換
+  imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+endif
+
+" <Plug>TcvimeIEnableKeymap実行時にコールバックされる関数。
+function OnTcvimeEnableKeymap()
+  " <Space>で前置型交ぜ書き変換を開始するか、読みが無ければ' 'を挿入。
+  " (lmapにすると、lmap有効時にfやtやrの後の<Space>が使用不可。(<C-R>=なので))
+  imap <silent> <Space> <C-G>u<Plug>TcvimeIConvOrSpace
+  imap <silent> <unique> <C-K>/ <Plug>TcvimeIAsciiStart
+  nmap <silent> <unique> <C-K>k <Plug>TcvimeNKatakana
+  nmap <silent> <unique> <C-K>h <Plug>TcvimeNHiragana
+  nmap <silent> <unique> <C-K><Space> <Plug>TcvimeNConvert
+  vmap <silent> <unique> <C-K>k <Plug>TcvimeVKatakana
+  vmap <silent> <unique> <C-K>h <Plug>TcvimeVHiragana
+  vmap <silent> <unique> <C-K>; <Plug>TcvimeVKanji2Seq
+  vmap <silent> <unique> <C-K>z <Plug>TcvimeVSeq2Kanji
+  vmap <silent> <unique> <C-K>, <Plug>TcvimeVShiftSeq
+endfunction
+
+" <Plug>TcvimeIDisableKeymap()実行時にコールバックされる関数。
+function OnTcvimeDisableKeymap()
+  silent! iunmap <Space>
+  silent! iunmap <C-K>/
+  silent! nunmap <C-K>k
+  silent! nunmap <C-K>h
+  silent! nunmap <C-K><Space>
+  silent! vunmap <C-K>k
+  silent! vunmap <C-K>h
+  silent! vunmap <C-K>;
+  silent! vunmap <C-K>z
+  silent! vunmap <C-K>,
+  TcvimeCloseHelp
+endfunction
+
+" lmapのカスタマイズ用の関数。
+" <Plug>TcvimeEnableKeymap実行中にtcvime#SetKeymap()からコールバックされる。
+" (lmapのロード時に1回のみ実行されるようにするため、
+" OnTcvimeEnableKeymap()と別関数)
+function TcvimeCustomKeymap()
+  " (TUT-Code用の例)
+  " 後置型部首合成変換
+  lmap <silent> ala <C-G>u<Plug>TcvimeIBushu
+  " lmapオフ
+  lmap <silent> a9 <C-G>u<Plug>TcvimeIDisableKeymap
+  " 前置型英字変換の読み入力開始
+  lmap <silent> a8 <Plug>TcvimeIAsciiStart
+  " 前置型交ぜ書き変換
+  lmap <silent> al<Space> <C-G>u<Plug>TcvimeIConvOrStart
+  " 前置型交ぜ書き変換(活用する語として変換)
+  lmap <silent> ali <C-G>u<Plug>TcvimeIKatuyo
+  " 直前のカタカナ変換・交ぜ書き変換・部首合成変換の取り消し
+  lmap <silent> alz <C-G>u<C-R>=tcvime#InputConvertUndo()<CR>
+  " 直前の交ぜ書き変換を縮める
+  lmap <silent> m> <C-G>u<Plug>TcvimeIShrink
+  " 後置型ひらがな変換: 指定文字数をひらがな変換。0:カタカナが続く間
+  lmap <silent> i0 <C-G>u<C-R>=tcvime#InputConvertHiragana(0)<CR>
+  " 後置型カタカナ変換: 指定文字数をカタカナ変換。0:ひらがなが続く間
+  lmap <silent> k0 <C-G>u<C-R>=tcvime#InputConvertKatakana(0)<CR>
+  for i in range(1, 9)
+    execute 'lmap <silent> k' . i "\<C-G>u\<C-R>=tcvime#InputConvertKatakana(" . i . ")\<CR>"
+    " 後置型カタカナ変換: 指定文字数のひらがなを残してカタカナ変換
+    execute 'lmap <silent> j' . i "\<C-G>u\<C-R>=tcvime#InputConvertKatakana(-" . i . ")\<CR>"
+    " 直前のカタカナ変換を縮める
+    execute 'lmap <silent> l' . i "\<C-G>u\<C-R>=tcvime#InputConvertKatakanaShrink(" . i . ")\<CR>"
+    " 後置型でカタカナ文字列を伸ばす: 文字数指定
+    execute 'lmap <silent> h' . i "\<C-G>u\<C-R>=tcvime#InputConvertKatakanaExtend(" . i . ")\<CR>"
+    " 後置型交ぜ書き変換: 読みの文字数指定有り: 活用しない語
+    execute 'lmap <silent> m' . i "\<C-G>u\<C-R>=tcvime#InputPostConvert(" . i . ",0)\<CR>"
+    " 後置型交ぜ書き変換: 読みの文字数指定有り: 活用する語
+    execute 'lmap <silent> n' . i "\<C-G>u\<C-R>=tcvime#InputPostConvert(" . i . ",1)\<CR>"
+    " 後置型漢字→入力シーケンス変換(指定文字数)
+    execute 'lmap <silent> ;' . i "\<C-G>u\<C-R>=tcvime#InputConvertKanji2Seq(" . i . ")\<CR>"
+    " 後置型入力シーケンス→漢字変換(指定文字数)
+    execute 'lmap <silent> z' . i "\<C-G>u\<C-R>=tcvime#InputConvertSeq2Kanji(" . i . ")\<CR>"
+  endfor
+  " 後置型でカタカナ文字列を伸ばす: カタカナより前でひらがなが続く間
+  lmap <silent> h0 <C-G>u<C-R>=tcvime#InputConvertKatakanaExtend(0)<CR>
+  " 後置型交ぜ書き変換: 読みの文字数指定無し: 活用しない語
+  lmap <silent> m0 <C-G>u<C-R>=tcvime#InputPostConvertStart(0)<CR>
+  " 後置型交ぜ書き変換: 読みの文字数指定無し: 活用する語
+  lmap <silent> n0 <C-G>u<C-R>=tcvime#InputPostConvertStart(1)<CR>
+  " 後置型入力シーケンス→漢字変換
+  lmap <silent> z0 <C-G>u<C-R>=tcvime#InputConvertSeq2Kanji(0)<CR>
+  " 後置型漢字→入力シーケンス変換(現位置からスペースまで)
+  lmap <silent> ;0 <C-G>u<C-R>=tcvime#InputConvertKanji2Seq(0)<CR>
+  " 後置型漢字→入力シーケンス変換(現位置からInsert mode開始位置または行頭まで)
+  lmap <silent> ;9 <C-G>u<C-R>=tcvime#InputConvertKanji2SeqAll()<CR><Plug>TcvimeIDisableKeymap
+  " tc2同様の後置型交ぜ書き変換を行うための設定:
+  " " 活用しない語
+  " lmap <silent> 18 <C-G>u<C-R>=tcvime#InputPostConvert(1, 0)<CR>
+  " lmap <silent> 28 <C-G>u<C-R>=tcvime#InputPostConvert(2, 0)<CR>
+  " lmap <silent> 38 <C-G>u<C-R>=tcvime#InputPostConvert(3, 0)<CR>
+  " lmap <silent> 48 <C-G>u<C-R>=tcvime#InputPostConvert(4, 0)<CR>
+  " " 活用する語(ただしtc2と違って、読みの文字数には活用語尾は含まない)
+  " lmap <silent> 29 <C-G>u<C-R>=tcvime#InputPostConvert(2, 1)<CR>
+  " lmap <silent> 39 <C-G>u<C-R>=tcvime#InputPostConvert(3, 1)<CR>
+  " lmap <silent> 49 <C-G>u<C-R>=tcvime#InputPostConvert(4, 1)<CR>
+  " lmap <silent> 59 <C-G>u<C-R>=tcvime#InputPostConvert(5, 1)<CR>
+endfunction
+endif
+" tcvime }}}
 " unite {{{
 " The prefix key.
-"nnoremap    [unite]   <Nop>
-"nmap    <Leader>f [unite]
+nnoremap    [unite]   <Nop>
+nmap <unique> <Leader>f [unite]
 
 " unite.vim keymap
 " https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
-"nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-"nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
-"nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
-"nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-"nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
-"nnoremap <silent> ,vr :UniteResume<CR>
+nnoremap [unite]u  :<C-u>Unite -no-split<Space>
+nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
+nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
+nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
+nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
+nnoremap <silent> ,vr :UniteResume<CR>
 
 " vinarise
 let g:vinarise_enable_auto_detect = 1
@@ -462,6 +583,13 @@ let g:vinarise_enable_auto_detect = 1
 "nnoremap <silent> ,vcb :Unite build:!<CR>
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
+" vim-clang {{{
+" set clang options for vim-clang
+let g:clang_c_options = '-std=c11'
+let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
+" let g:clang_cpp_options = g:clang_cpp_options . ' ' . system('pkg-config libxml++-2.6 --cflags')
+let g:clang_diagsopt = 'rightbelow:6'
+" vim-clang }}}
 " bundle {{{
 " syntax off
 " set nocompatible
@@ -476,40 +604,70 @@ endif
 
 call neobundle#begin(expand('~/.vim/bundle'))
 
+
+" Package
+NeoBundle 'Shougo/neobundle.vim'
+
+" Colorscheme
 NeoBundle 'CSApprox'
+
+" Markdown
 NeoBundle 'hallison/vim-markdown'
 NeoBundle 'vim-pandoc/vim-pandoc'
 NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+
+" Modeline
 NeoBundle 'Modeliner'
 
+" Binary Edigor
 NeoBundle 'Shougo/vinarise'
-NeoBundle 'Shougo/neobundle.vim'
+
+" Complation
 NeoBundle 'Shougo/neocomplcache'
+
+" Libraries
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc'
+
+" Filer
 NeoBundle 'Shougo/vimfiler'
+
+" Shell
 NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neobundle.vim'
+
+" File
+" NeoBundle 'ctrlp.vim'
+
+" ???
 NeoBundle 'ujihisa/unite-locate'
 " NeoBundle 'violetyk/cake.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'taglist.vim'
-NeoBundle 'ZenCoding.vim'
 NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'fugitive.vim'
-NeoBundle 'TwitVim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
-NeoBundle 'dbext.vim'
+
+" C/C++
+NeoBundle 'justmao945/vim-clang'
+
+" DB
+" NeoBundle 'dbext.vim'
+
+" HTML
+NeoBundle 'ZenCoding.vim'
+
+" Web
+NeoBundle 'TwitVim'
 " NeoBundle 'rails.vim'
 NeoBundle 'Gist.vim'
 NeoBundle 'motemen/hatena-vim'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/unite-advent_calendar'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'open-browser.vim'
-NeoBundle 'ctrlp.vim'
+
 NeoBundle 'jelera/vim-javascript-syntax'
 
 " Text Editing
@@ -518,12 +676,13 @@ NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'fuenor/qfixgrep'
 NeoBundle 'osyo-manga/unite-qfixhowm'
 
-NeoBundle 'VimOutliner'
+" NeoBundle 'VimOutliner' " It introduces smart paste, although it is not smart in Haskell source
 NeoBundle 'VOoM'
 NeoBundle 'WOIM.vim'
 
 " CSV
 NeoBundle 'Align'
+NeoBundle 'csv.vim'
 
 " Buffer
 NeoBundle 'NrrwRgn'
@@ -551,12 +710,13 @@ NeoBundle 'polytonic.utf-8.spl'
 
 " Japanese
 "NeoBundle 'tyru/skk.vim'
+NeoBundle 'deton/tcvime'
 " Language }}}
 
 call neobundle#end()
 
 filetype plugin indent on
-" syntax on
+syntax on
 
 let g:neocomplcache_enable_at_startup = 1
 " bundle }}}
@@ -582,4 +742,7 @@ set background=dark
 colorscheme koehler
 set mouse=a
 " }}} config
+" XML {{{
+let g:xml_syntax_folding = 1
+" XML }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
