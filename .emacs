@@ -163,5 +163,6 @@
 
 ;; proof general
 (if darwin-p
-  (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
-  (load-file "/usr/local/share/ssreflect/pg-ssr.el"))
+  (progn
+    (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+    (load-file "/usr/local/share/ssreflect/pg-ssr.el")))
