@@ -101,6 +101,11 @@
 (setq w3m-use-cookie t)
 
 
+(setq process-coding-system-alist
+	        (cons '("gosh" utf-8 . utf-8) process-coding-system-alist))
+(setq scheme-program-name "gosh -i")
+(autoload 'scheme-mode "cmuscheme" "Major mode for Scheme." t)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process." t)
 ;(require 'scheme-complete)
 ;(require 'quack)
 ;(autoload 'scheme-smart-complete "scheme-complete" nil t)
@@ -162,8 +167,9 @@
 
 ;; proof general
 (if darwin-p
-  (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
-  (load-file "/usr/local/share/ssreflect/pg-ssr.el"))
+  (progn
+    (load-file "/usr/local/share/emacs/site-lisp/ProofGeneral/generic/proof-site.el")
+    (load-file "/usr/local/share/ssreflect/pg-ssr.el")))
 
 (when (require 'skk nil t)
   (global-set-key (kbd "C-x j") 'skk-auto-fill-mode) ;;良い感じに改行を自動入力してくれる機能

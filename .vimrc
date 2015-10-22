@@ -258,9 +258,15 @@ augroup END
 "   set shellcmdflag=-c
 "   set makeef=
 "   set shellslash
+if hostname() == 'geirscoegul'
+  let $PLUGINROOT=$HOME.'/vim-plugin'
+  let qfixmemo_chenv_dir = '~/Documents/qfixmemo'
+  let qfixmemo_dir = qfixmemo_chenv_dir
+else
   let $PLUGINROOT=$HOME.'/vim-plugin'
   let qfixmemo_chenv_dir = '~/qfixmemo'
   let qfixmemo_dir = qfixmemo_chenv_dir
+endif
 
 "   if has('gui')
 "     set ambiwidth=single
@@ -284,7 +290,7 @@ if has('mac')
   let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
-set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
+set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
 
 " enviroment }}}
 
@@ -426,7 +432,8 @@ augroup MyHaskell
   " au Bufenter *.hs,*.lhs compiler ghc
   au BufRead,BufNewFile *.hs setl sw=2 expandtab
   au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-"  au BufWritePost *.hs :GhcModCheckAndLintAsync
+  au BufRead,BufNewFile *.cabal setl sw=2 expandtab
+  au BufWritePost *.hs :GhcModCheckAndLintAsync
   au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
   au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
   au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
