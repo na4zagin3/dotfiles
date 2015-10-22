@@ -34,9 +34,16 @@ fi
 #alias gs="gs-ja"
 alias jman="LANG=ja_JP.utf8 \jman"
 
+if [ `uname` = "Darwin" ]
+then
 #alias mo="mozilla &"
-alias v="vi"
-alias enw="emacs -nw"
+#alias v="vi"
+#alias enw="emacs -nw"
+	alias gensokyo-chronicle="wine32; wine ~/.wine32/drive_c/AQUASTYLE/不思議の幻想郷CHRONICLE\ -クロニクル-/不思議の幻想郷クロニクル.exe"
+	alias gensokyo3="wine32; wine ~/.wine32/drive_c/AQUASTYLE/不思議の幻想郷3/不思議の幻想郷3.exe"
+fi
+alias wine64="export WINEPREFIX=~/.wine64; export WINEARCH=win64"
+alias wine32="export WINEPREFIX=~/.wine32; export WINEARCH=win32"
 
 alias a="./a.out"
 alias x="exit"
