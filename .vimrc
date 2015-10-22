@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 10-Jan-2015.
+" Last Change: 13-Jan-2015.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -289,6 +289,10 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " enviroment }}}
 
 " howm {{{
+" autocmd! QFixMRU BufLeave
+" let g:QFixMRU_Disable = 1
+" let g:disable_QFixMemoChEnv = 1
+let QFixMRU_EntryMax     = 30
 let g:QFixHowm_Convert = 0
 let qfixmemo_fileencoding='utf-8'
 let qfixmemo_fileformat='dos'
