@@ -499,6 +499,10 @@ function TcvimeCustomKeymap()
   " (TUT-Code用の例)
   " 後置型部首合成変換
   lmap <silent> ala <C-G>u<Plug>TcvimeIBushu
+  " 前置型交ぜ書き変換の読み入力開始
+  lmap <silent> alj <C-G>u<Plug>TcvimeIStart
+  " 前置型交ぜ書き変換
+  lmap <silent> al<Space> <C-G>u<Plug>TcvimeIConvOrStart
   " lmapオフ
   lmap <silent> a9 <C-G>u<Plug>TcvimeIDisableKeymap
   " 前置型英字変換の読み入力開始
