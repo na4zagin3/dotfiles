@@ -459,7 +459,11 @@ NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'fugitive.vim'
-NeoBundle 'TwitVim'
+
+if version > 703
+  NeoBundle 'TwitVim'
+endif
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'dbext.vim'
