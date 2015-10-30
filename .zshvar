@@ -7,12 +7,31 @@ export PATH="/opt/hadoop/bin:${PATH}"
 export PATH="/opt/android-sdk-update-manager/tools:${HOME}/bin:${PATH}"
 export PATH="${HOME}/.cabal/bin:${PATH}"
 export PATH="${HOME}/usr/bin:${PATH}"
+# [ -d ${HOME}/opt/llvm/bin ] && export PATH="${HOME}/opt/llvm/bin:${PATH}"
 if [ `uname` = "Darwin" ] ; then
   export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
   fpath=(/usr/local/share/zsh-completions $fpath)
+  export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+  export WINEPREFIX=~/.wine32
+  export WINEARCH=win32
+  export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
+  eval `/usr/libexec/path_helper -s`
+  export SHELL='/bin/zsh'
 fi
-#export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-#export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
+export PATH="${HOME}/.cabal/bin:${PATH}"
+export PATH="${HOME}/usr/bin:${PATH}"
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
+
+setting-quartus () {
+QUARTUS_DIR="${HOME}/altera/14.1/quartus"
+for product in . sopc_builder ; do
+  export PATH="${QUARTUS_DIR}/${product}/bin:${PATH}"
+done
+export LD_LIBRARY_PATH="${QUARTUS_DIR}/linux64:$LD_LIBRARY_PATH"
+}
+
 export EDITOR='vim'
 export STOW_DIR='/var/lib/stow'
 

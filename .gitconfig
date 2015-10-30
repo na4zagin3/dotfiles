@@ -5,3 +5,5 @@
 	ui = auto
 [github]
 	user = na4zagin3
+[push]
+	default = simple
