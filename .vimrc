@@ -526,6 +526,13 @@ augroup MyVimOrganizer
   autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
 augroup END
 " VimOrganizer }}}
+" XML {{{
+let g:xml_syntax_folding = 1
+augroup MyXML
+  autocmd!
+  autocmd BufNewFile,BufRead *.html :set foldmethod=syntax
+augroup END
+" XML }}}
 " NeoComplcache {{{
 if has('mac') && has('xim')
   let g:neocomplcache_auto_completion_start_length = 3
