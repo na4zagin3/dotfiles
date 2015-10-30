@@ -12,7 +12,7 @@ setopt autocd extendedglob
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle :compinstall filename '/home/mrty/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 autoload -Uz compinit
 compinit
