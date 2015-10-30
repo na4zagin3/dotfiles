@@ -11,10 +11,24 @@ if [ `uname` = "Darwin" ] ; then
   export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
   fpath=(/usr/local/share/zsh-completions $fpath)
 fi
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+#export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
 export EDITOR='vim'
 export STOW_DIR='/var/lib/stow'
 
 [ -f ~/.vars-x10 ] && source ~/.vars-x10
 [ -f ~/.zshvar-audio ] && source ~/.zshvar-audio
+if [ -e /home/noriakis/.nix-profile/etc/profile.d/nix.sh ]; then source /home/noriakis/.nix-profile/etc/profile.d/nix.sh ; fi # added by Nix installer
+if [ -e /home/noriakis/mips-elf ]; then
+  export PATH="${PATH}:/home/noriakis/mips-elf/bin"
+fi
+if [ -e /home/noriakis/gentoo ]; then
+#if false; then
+	export EPREFIX="$HOME/gentoo"
+	export PATH="$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:${PATH}"
+	export DISTCC_LOG="$EPREFIX/var/log/distcc.log"
+	export DISTCC_TCP_CORK=0
+fi
+if [ -e /home/noriakis ]; then
+  export PATH="${PATH}:/home/noriakis/opt/llvm/bin"
+fi
