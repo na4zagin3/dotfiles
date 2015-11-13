@@ -290,7 +290,7 @@ if has('mac')
   let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
 
 " enviroment }}}
 
