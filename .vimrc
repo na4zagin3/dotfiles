@@ -655,6 +655,7 @@ NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'fugitive.vim'
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 
@@ -668,7 +669,10 @@ NeoBundle 'justmao945/vim-clang'
 NeoBundle 'ZenCoding.vim'
 
 " Web
-NeoBundle 'TwitVim'
+if version > 703
+  NeoBundle 'TwitVim'
+endif
+
 " NeoBundle 'rails.vim'
 NeoBundle 'Gist.vim'
 NeoBundle 'motemen/hatena-vim'
@@ -740,6 +744,13 @@ augroup MyVimOrganizer
   autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
 augroup END
 " VimOrganizer }}}
+" XML {{{
+let g:xml_syntax_folding = 1
+augroup MyXML
+  autocmd!
+  autocmd BufNewFile,BufRead *.html :set foldmethod=syntax
+augroup END
+" XML }}}
 " NeoComplcache {{{
 if has('mac') && has('xim')
   let g:neocomplcache_auto_completion_start_length = 3
