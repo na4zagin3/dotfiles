@@ -581,7 +581,7 @@ nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
-nnoremap <silent> ,vr :UniteResume<CR>
+nnoremap <silent> [unite]vr :UniteResume<CR>
 
 " vinarise
 let g:vinarise_enable_auto_detect = 1
