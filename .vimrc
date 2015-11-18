@@ -291,6 +291,7 @@ if has('mac')
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
 set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+let g:mapleader = "<Bslash>"
 " enviroment }}}
 
 " howm {{{
