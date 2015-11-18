@@ -3,7 +3,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 10-Jan-2015.
+" Last Change: 13-Jan-2015.
 " Maintainer:  MURAOKA Taro <koron@tka.att.ne.jp>
 "
 " 解説:
@@ -295,6 +295,10 @@ let g:mapleader = "<Bslash>"
 " enviroment }}}
 
 " howm {{{
+" autocmd! QFixMRU BufLeave
+" let g:QFixMRU_Disable = 1
+" let g:disable_QFixMemoChEnv = 1
+let QFixMRU_EntryMax     = 30
 let g:QFixHowm_Convert = 0
 let qfixmemo_fileencoding='utf-8'
 let qfixmemo_fileformat='dos'
@@ -428,7 +432,8 @@ augroup MyHaskell
   " au Bufenter *.hs,*.lhs compiler ghc
   au BufRead,BufNewFile *.hs setl sw=2 expandtab
   au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-"  au BufWritePost *.hs :GhcModCheckAndLintAsync
+  au BufRead,BufNewFile *.cabal setl sw=2 expandtab
+  au BufWritePost *.hs :GhcModCheckAndLintAsync
   au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
   au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
   au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
@@ -507,6 +512,10 @@ function TcvimeCustomKeymap()
   " (TUT-Code用の例)
   " 後置型部首合成変換
   lmap <silent> ala <C-G>u<Plug>TcvimeIBushu
+  " 前置型交ぜ書き変換の読み入力開始
+  lmap <silent> alj <C-G>u<Plug>TcvimeIStart
+  " 前置型交ぜ書き変換
+  lmap <silent> al<Space> <C-G>u<Plug>TcvimeIConvOrStart
   " lmapオフ
   lmap <silent> a9 <C-G>u<Plug>TcvimeIDisableKeymap
   " 前置型英字変換の読み入力開始
@@ -578,7 +587,7 @@ nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
 nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
 nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
-nnoremap <silent> ,vr :UniteResume<CR>
+nnoremap <silent> [unite]vr :UniteResume<CR>
 
 " vinarise
 let g:vinarise_enable_auto_detect = 1
@@ -652,6 +661,7 @@ NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'fugitive.vim'
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
 
@@ -665,7 +675,10 @@ NeoBundle 'justmao945/vim-clang'
 NeoBundle 'ZenCoding.vim'
 
 " Web
-NeoBundle 'TwitVim'
+if version > 703
+  NeoBundle 'TwitVim'
+endif
+
 " NeoBundle 'rails.vim'
 NeoBundle 'Gist.vim'
 NeoBundle 'motemen/hatena-vim'
@@ -737,6 +750,13 @@ augroup MyVimOrganizer
   autocmd FileType org :noremap <silent> <buffer> <localleader>ad :call OrgRunAgenda(strftime("%Y-%m-%d"),'w','+FINISHED_TODOS')<cr>
 augroup END
 " VimOrganizer }}}
+" XML {{{
+let g:xml_syntax_folding = 1
+augroup MyXML
+  autocmd!
+  autocmd BufNewFile,BufRead *.html :set foldmethod=syntax
+augroup END
+" XML }}}
 " NeoComplcache {{{
 if has('mac') && has('xim')
   let g:neocomplcache_auto_completion_start_length = 3

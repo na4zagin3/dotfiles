@@ -12,7 +12,7 @@ setopt autocd extendedglob
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' file-sort name
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle :compinstall filename '/home/mrty/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -34,4 +34,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 [ -f ~/.zshtest ] && source ~/.zshtest
 [ -f ~/.zshvar ] && source ~/.zshvar
 [ -f ~/.zshkey ] && source ~/.zshkey
+[[ "$(hostname)" =~ ".*\.cad\.ce\.titech\.ac\.jp" ]] && export USERNAME="$USER"
+
 # vim: ft=zsh :

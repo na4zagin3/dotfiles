@@ -23,3 +23,8 @@ fi
 alias ls='ls --color=auto'
 #PS1='[\u@\h \W]\$ '
 # export SCIPY_PIL_IMAGE_VIEWER=display
+
+if [[ "$(hostname)" = "desk-pc" ]] ; then
+  export QSYS_ROOTDIR="/home/mrty/altera/14.1/quartus/sopc_builder/bin"
+  export ALTERAOCLSDKROOT="/home/mrty/altera/14.1/hld"
+fi
