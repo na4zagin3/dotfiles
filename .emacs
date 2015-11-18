@@ -1,5 +1,6 @@
-(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
-    (normal-top-level-add-subdirs-to-load-path))
+(if (eq system-type 'darwin)
+  (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+	(normal-top-level-add-subdirs-to-load-path)))
 
 (setq exec-path (append '("/Users/mrty/.cabal/bin" "/Users/mrty/.opam/system/bin" "/usr/local/share/npm/bin" "/usr/local/bin") exec-path))
 (setq custom-file "~/.emacscustom")
