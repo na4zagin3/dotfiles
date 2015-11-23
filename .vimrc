@@ -462,9 +462,9 @@ if has('keymap')
   imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap
   imap <silent> <unique> <ESC> <ESC>:set imsearch=0<CR>
   " コントロールキーを伴わないモード切り替え: <Space>,でオンにする
-  imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
+  " imap <silent> <unique> , <C-G>u<C-R>=tcvime#EnableKeymapOrInsertChar(',',1)<CR>
   " <Space>;で後置型英字変換
-  imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
+  " imap <silent> <unique> ; <C-G>u<C-R>=tcvime#InputPostConvertAscii(';')<CR>
 endif
 
 " <Plug>TcvimeIEnableKeymap実行時にコールバックされる関数。
