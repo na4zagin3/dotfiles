@@ -1,5 +1,16 @@
-(let ((default-directory "/usr/local/share/emacs/site-lisp/"))
-    (normal-top-level-add-subdirs-to-load-path))
+(if (eq system-type 'darwin)
+  (let ((default-directory "/usr/local/share/emacs/site-lisp/"))
+	(normal-top-level-add-subdirs-to-load-path)))
+
+(if (and nil (eq system-type 'gnu/linux))
+  (progn
+	(set-face-attribute 'default nil :family "Monospace" :height 140)
+	; (set-fontset-font (frame-parameter nil 'font)
+					  ; 'japanese-jisx0208
+					  ; (font-spec :family "Hiragino Kaku Gothic ProN"))
+	; (add-to-list 'face-font-rescale-alist
+				 ; '(".*Hiragino Kaku Gothic ProN.*" . 1.2))
+				 ))
 
 (setq exec-path (append '("/Users/mrty/.cabal/bin" "/Users/mrty/.opam/system/bin" "/usr/local/share/npm/bin" "/usr/local/bin") exec-path))
 (setq custom-file "~/.emacscustom")
