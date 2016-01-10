@@ -715,7 +715,7 @@ NeoBundle 'ngn/vim-apl'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'pbrisbin/html-template-syntax'
-NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'eagletmt/unite-haddock'
 
 " JavaScript
