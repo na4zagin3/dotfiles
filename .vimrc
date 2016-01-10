@@ -590,14 +590,16 @@ nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> [unite]vr :UniteResume<CR>
 
-" vinarise
-let g:vinarise_enable_auto_detect = 1
-
 " unite-build map
 "nnoremap <silent> ,vb :Unite build<CR>
 "nnoremap <silent> ,vcb :Unite build:!<CR>
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
+
+" vinarise {{{
+"let g:vinarise_enable_auto_detect = 1
+" vinarise }}}
+
 " vim-clang {{{
 " set clang options for vim-clang
 let g:clang_c_options = '-std=c11'
