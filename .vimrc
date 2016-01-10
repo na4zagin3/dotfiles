@@ -290,7 +290,8 @@ if has('mac')
   let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+" set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
+set fileencodings=ucs-bom,utf-8,iso-2022-jp-2004,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,euc-jp,eucjp-ms,Shift_JIS-2004,cp932
 let g:mapleader = "<Bslash>"
 " enviroment }}}
 
