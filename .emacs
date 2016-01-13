@@ -50,6 +50,11 @@
 
     ;;;; git
     ; magit git-gutter
+
+    ;;;; evil
+    evil
+    evil-tabs
+    w3m
     ))
 
 ;; my/favorite-packagesからインストールしていないパッケージをインストール
