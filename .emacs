@@ -234,6 +234,11 @@
   (require 'skk-study))                              ;;変換学習機能の追加
 
 (require 'tc-setup)
+(add-hook 'tcode-after-load-table-hook
+               (function
+                (lambda ()
+                  (tcode-set-key "'" 'tcode-toggle-katakana-mode))))
+
 
 ; 毎起動時に (xterm-turn-on-modify-other-keys) を実行させたいが、どうしたらいいか？ terminalってのごとかもしれないけども。
 
