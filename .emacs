@@ -21,7 +21,7 @@
 ;(package-install 'evil)
 ;(package-install 'evil)
 ;; パッケージ情報の更新
-(package-refresh-contents)
+; (package-refresh-contents)
 
 ;; インストールするパッケージ
 (defvar my/favorite-packages

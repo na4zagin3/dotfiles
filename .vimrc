@@ -290,7 +290,8 @@ if has('mac')
   let $PATH='/Users/mrty/.opam/system/bin:'.$PATH
   let $PATH='/usr/local/share/npm/bin:'.$PATH
 endif
-set fileencodings=utf-8,iso-2022-jp,euc-jp,sjis
+" set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
+set fileencodings=ucs-bom,utf-8,iso-2022-jp-2004,iso-2022-jp-3,iso-2022-jp,euc-jisx0213,euc-jp,eucjp-ms,Shift_JIS-2004,cp932
 let g:mapleader = "<Bslash>"
 " enviroment }}}
 
@@ -589,14 +590,26 @@ nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
 nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> [unite]vr :UniteResume<CR>
 
-" vinarise
-let g:vinarise_enable_auto_detect = 1
-
 " unite-build map
 "nnoremap <silent> ,vb :Unite build<CR>
 "nnoremap <silent> ,vcb :Unite build:!<CR>
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
+" vinarise {{{
+"let g:vinarise_enable_auto_detect = 1
+" vinarise }}}
+" {{{ vim-operator-surround
+" operator mappings
+map <silent>sa <Plug>(operator-surround-append)
+map <silent>sd <Plug>(operator-surround-delete)
+map <silent>sr <Plug>(operator-surround-replace)
+
+let g:operator#surround#blocks = {
+    \ 'markdown' : [
+\       { 'block' : ["```\n", "\n```"], 'motionwise' : ['line'], 'keys' : ['`'] },
+    \ ] }
+" }}} vim-operator-surround
+
 " vim-clang {{{
 " set clang options for vim-clang
 let g:clang_c_options = '-std=c11'
@@ -621,6 +634,17 @@ call neobundle#begin(expand('~/.vim/bundle'))
 
 " Package
 NeoBundle 'Shougo/neobundle.vim'
+
+" {{{ Operator/TextObjects
+NeoBundle 'kana/vim-operator-user'
+NeoBundle 'kana/vim-textobj-user'
+
+NeoBundle 'rhysd/vim-operator-surround'
+" NeoBundle 'tpope/vim-surround'
+
+" Operator/TextObjects: LaTeX
+NeoBundle 'rbonvall/vim-textobj-latex'
+" }}} Operator/TextObjects
 
 " Colorscheme
 NeoBundle 'CSApprox'
@@ -655,7 +679,6 @@ NeoBundle 'Shougo/vimshell'
 " ???
 NeoBundle 'ujihisa/unite-locate'
 " NeoBundle 'violetyk/cake.vim'
-NeoBundle 'tpope/vim-surround'
 NeoBundle 'taglist.vim'
 NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
@@ -712,7 +735,7 @@ NeoBundle 'ngn/vim-apl'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'pbrisbin/html-template-syntax'
-NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'eagletmt/unite-haddock'
 
 " JavaScript
