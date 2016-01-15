@@ -590,8 +590,8 @@ nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
 nnoremap <silent> [unite]vr :UniteResume<CR>
 
 " vinarise
-let g:vinarise_enable_auto_detect = 1
-
+let g:vinarise_enable_auto_detect = 0
+let g:vinarise_detect_large_file_size = 0
 " unite-build map
 "nnoremap <silent> ,vb :Unite build<CR>
 "nnoremap <silent> ,vcb :Unite build:!<CR>
