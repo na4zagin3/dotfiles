@@ -33,8 +33,16 @@ export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
 export PATH="${HOME}/.local/bin:${PATH}"
 export LD_LIBRARY_PATH="${HOME}/.local/usr/lib:$LD_LIBRARY_PATH"
 
+setting-modelsim () {
+QUARTUS_DIR="${HOME}/altera/14.1/modelsim_ase"
+for product in . sopc_builder ; do
+  export PATH="${QUARTUS_DIR}/${product}/bin:${PATH}"
+done
+#export LD_LIBRARY_PATH="${QUARTUS_DIR}/linux64:$LD_LIBRARY_PATH"
+}
+
 setting-quartus () {
-QUARTUS_DIR="${HOME}/altera/14.1/quartus"
+QUARTUS_DIR="${HOME}/altera/15.1/quartus"
 for product in . sopc_builder ; do
   export PATH="${QUARTUS_DIR}/${product}/bin:${PATH}"
 done
