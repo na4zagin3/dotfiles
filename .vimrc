@@ -235,6 +235,7 @@ augroup MyGroup
   autocmd FileType tex :set shiftwidth=4
   " schemeをgaucheに
   autocmd FileType scheme :let is_gauche=1
+  autocmd BufNewFile,BufRead *.Rtex :setfiletype tex
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
