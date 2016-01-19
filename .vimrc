@@ -411,6 +411,13 @@ set fileencoding=utf-8
 let &termencoding = &encoding
 set langmenu=ja_JP.utf-8
 " encoding }}}
+" {{{ keymap
+" Disable s and S
+nnoremap s <nop>
+nnoremap S <nop>
+vnoremap s <nop>
+nnoremap S <nop>
+" }}} keymap
 " TwitVim {{{
 if has("perl")
   let twitvim_enable_perl = 1
