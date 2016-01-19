@@ -690,7 +690,11 @@ NeoBundle 'taglist.vim'
 NeoBundle 'ref.vim'
 NeoBundle 'The-NERD-tree'
 NeoBundle 'The-NERD-Commenter'
+
+" VCS: Git
 NeoBundle 'fugitive.vim'
+NeoBundle 'AndrewRadev/gapply.vim'
+
 
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-localrc'
