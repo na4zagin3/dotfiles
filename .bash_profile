@@ -5,6 +5,6 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 if [[ "$(hostname)" = "desk-pc" ]] ; then
-  export QSYS_ROOTDIR="/home/mrty/altera/14.1/quartus/sopc_builder/bin"
-  export ALTERAOCLSDKROOT="/home/mrty/altera/14.1/hld"
+  export QSYS_ROOTDIR="/home/mrty/altera_lite/15.1/quartus/sopc_builder/bin"
+  export ALTERAOCLSDKROOT="/home/mrty/altera_lite/15.1/hld"
 fi

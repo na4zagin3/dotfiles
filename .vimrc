@@ -235,6 +235,7 @@ augroup MyGroup
   autocmd FileType tex :set shiftwidth=4
   " schemeをgaucheに
   autocmd FileType scheme :let is_gauche=1
+  autocmd BufNewFile,BufRead *.Rtex :setfiletype tex
   autocmd BufNewFile,BufRead *.tup :setfiletype tup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
@@ -603,7 +604,8 @@ nnoremap <silent> [unite]vr :UniteResume<CR>
 "nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
 " unite }}}
 " vinarise {{{
-"let g:vinarise_enable_auto_detect = 1
+let g:vinarise_enable_auto_detect = 0
+let g:vinarise_detect_large_file_size = 0
 " vinarise }}}
 " {{{ vim-operator-surround
 " operator mappings
