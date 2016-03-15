@@ -28,10 +28,18 @@
 ;;; SUCH DAMAGE.
 ;;;;
 
+(define (tutcode-variation new old)
+  (list old new))
+(define (tutcode-variation-shift new old)
+  (list new old))
+
+(define (TUTCODE-VARIATION new old)
+  (list new old))
+
 ;;; tutcode.scmÍÑ¥­¡¼ÇÛÎó¥Æ¡¼¥Ö¥ë¤ÎÄêµÁ
 ;;; TUT-Code¡£QWERTY¥­¡¼¥Ü¡¼¥ÉÍÑ¡£
 (define tutcode-rule
-  '(
+  `(
     ; tutcode-key-custom¤ÇÀßÄê
     ;((("a" "l" "a"))(tutcode-bushu-start)) ;Á°ÃÖ·¿Éô¼ó¹çÀ®ÊÑ´¹³«»Ï
     ;((("a" "l" "j"))(tutcode-mazegaki-start)) ;Á°ÃÖ·¿¸ò¤¼½ñ¤­ÊÑ´¹³«»Ï
@@ -1215,7 +1223,8 @@
     ((("/" "h" "z"))("Âé"))
     ((("/" "m" "a"))("»Æ"))
     ((("/" "m" "b"))("Î¿"))
-    ((("/" "m" "c"))("Çí"))
+    ((("/" "m" "c")),(tutcode-variation "Çí" "¯þ"))
+    ((("/" "M" "C")),(TUTCODE-VARIATION "Çí" "¯þ"))
     ((("/" "m" "d"))("½Ù"))
     ((("/" "m" "e"))("µ¦"))
     ((("/" "m" "f"))("Ìè"))
@@ -1960,7 +1969,8 @@
     ((("k" "n" "s"))("Éâ"))
     ((("k" "n" "t"))("´«"))
     ((("k" "n" "v"))("»´"))
-    ((("k" "n" "w"))("²¾"))
+    ((("k" "n" "w")),(tutcode-variation "²¾" "Ðñ"))
+    ((("K" "N" "W")),(TUTCODE-VARIATION "²¾" "Ðñ"))
     ((("k" "n" "x"))("Ê°"))
     ((("k" "n" "z"))("³¯"))
     ((("k" "y" "a"))("¼÷"))
@@ -2449,7 +2459,8 @@
     ((("s" "v" ";"))("É¶"))
     ((("s" "v" "h"))("¾Ü"))
     ((("s" "v" "i"))("¾Ñ"))
-    ((("s" "v" "j"))("Ìá"))
+    ((("s" "v" "j")),(tutcode-variation "Ìá" "ôã"))
+    ((("S" "V" "J")),(TUTCODE-VARIATION "Ìá" "ôã"))
     ((("s" "v" "k"))("¹¹"))
     ((("s" "v" "l"))("Á¦"))
     ((("s" "v" "m"))("´Ù"))
