@@ -670,7 +670,8 @@ NeoBundle 'Modeliner'
 NeoBundle 'Shougo/vinarise'
 
 " Complation
-NeoBundle 'Shougo/neocomplcache'
+" NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
 
 " Libraries
 NeoBundle 'Shougo/unite.vim'
@@ -772,7 +773,6 @@ call neobundle#end()
 filetype plugin indent on
 syntax on
 
-let g:neocomplcache_enable_at_startup = 1
 " bundle }}}
 " VimOrganizer {{{
 let g:org_command_for_emacsclient ='emacsclient'
@@ -794,9 +794,10 @@ augroup MyXML
 augroup END
 " XML }}}
 " NeoComplcache {{{
-if has('mac') && has('xim')
-  let g:neocomplcache_auto_completion_start_length = 3
-endif
+let g:neocomplete#enable_at_startup = 1
+" if has('mac') && has('xim')
+"   let g:neocomplcache_auto_completion_start_length = 3
+" endif
 " NeoComplcache }}}
 " {{{ config
 set background=dark
