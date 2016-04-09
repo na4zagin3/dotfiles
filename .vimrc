@@ -619,151 +619,153 @@ let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
 " let g:clang_cpp_options = g:clang_cpp_options . ' ' . system('pkg-config libxml++-2.6 --cflags')
 let g:clang_diagsopt = 'rightbelow:6'
 " vim-clang }}}
-" bundle {{{
-" syntax off
-" set nocompatible
-" filetype plugin indent off
-
-if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+" dein {{{
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
-call neobundle#begin(expand('~/.vim/bundle'))
+" Required:
+set runtimepath^=/home/mrty/.vim/dein/repos/github.com/Shougo/dein.vim
 
+" Required:
+call dein#begin(expand('/home/mrty/.vim/dein'))
 
-" Package
-NeoBundle 'Shougo/neobundle.vim'
+" Let dein manage dein
+" Required:
+call dein#add('Shougo/dein.vim')
 
+" Add or remove your plugins here:
+" call dein#add('Shougo/neosnippet.vim')
+" call dein#add('Shougo/neosnippet-snippets')                                                                                   
+
+" You can specify revision/branch/tag.
+"call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+
+" Plugins {{{
 " {{{ Operator/TextObjects
-NeoBundle 'kana/vim-operator-user'
-NeoBundle 'kana/vim-textobj-user'
+call dein#add('kana/vim-operator-user')
+call dein#add('kana/vim-textobj-user')
 
-NeoBundle 'rhysd/vim-operator-surround'
-" NeoBundle 'tpope/vim-surround'
+call dein#add('rhysd/vim-operator-surround')
+" call dein#add('tpope/vim-surround')
 
 " Operator/TextObjects: LaTeX
-NeoBundle 'rbonvall/vim-textobj-latex'
+call dein#add('rbonvall/vim-textobj-latex')
 " }}} Operator/TextObjects
 
 " Colorscheme
-NeoBundle 'CSApprox'
+" call dein#add('CSApprox')
 
 " Markdown
-NeoBundle 'hallison/vim-markdown'
-NeoBundle 'vim-pandoc/vim-pandoc'
-NeoBundle 'vim-pandoc/vim-pandoc-syntax'
+call dein#add('hallison/vim-markdown')
+call dein#add('vim-pandoc/vim-pandoc')
+call dein#add('vim-pandoc/vim-pandoc-syntax')
 
 " Modeline
-NeoBundle 'Modeliner'
+call dein#add('Modeliner')
 
 " Binary Edigor
-NeoBundle 'Shougo/vinarise'
+call dein#add('Shougo/vinarise')
 
 " Complation
-NeoBundle 'Shougo/neocomplcache'
+call dein#add('Shougo/neocomplete.vim')
 
 " Libraries
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc'
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/vimproc.vim', { 'build': 'make' })
 
 " Filer
-NeoBundle 'Shougo/vimfiler'
+call dein#add('Shougo/vimfiler')
 
 " Shell
-NeoBundle 'Shougo/vimshell'
+call dein#add('Shougo/vimshell')
 
 " File
-" NeoBundle 'ctrlp.vim'
+" call dein#add('ctrlp.vim')
 
 " ???
-NeoBundle 'ujihisa/unite-locate'
-" NeoBundle 'violetyk/cake.vim'
-NeoBundle 'taglist.vim'
-NeoBundle 'ref.vim'
-NeoBundle 'The-NERD-tree'
-NeoBundle 'The-NERD-Commenter'
-NeoBundle 'fugitive.vim'
+call dein#add('ujihisa/unite-locate')
+" call dein#add('violetyk/cake.vim')
+call dein#add('taglist.vim')
+call dein#add('ref.vim')
+call dein#add('The-NERD-tree')
+call dein#add('The-NERD-Commenter')
+call dein#add('fugitive.vim')
 
-NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-localrc'
+call dein#add('thinca/vim-quickrun')
+call dein#add('thinca/vim-localrc')
 
 " C/C++
-NeoBundle 'justmao945/vim-clang'
+call dein#add('justmao945/vim-clang')
 
-" DB
-" NeoBundle 'dbext.vim'
-
-" HTML
-NeoBundle 'ZenCoding.vim'
 
 " Web
 if version > 703
-  NeoBundle 'TwitVim'
+  call dein#add('TwitVim')
 endif
 
-" NeoBundle 'rails.vim'
-NeoBundle 'Gist.vim'
-NeoBundle 'motemen/hatena-vim'
-" NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mattn/unite-advent_calendar'
-NeoBundle 'open-browser.vim'
+" call dein#add('rails.vim')
+call dein#add('Gist.vim')
+call dein#add('motemen/hatena-vim')
 
-NeoBundle 'jelera/vim-javascript-syntax'
+call dein#add('jelera/vim-javascript-syntax')
 
 " Text Editing
-NeoBundle 'hsitz/VimOrganizer'
-NeoBundle 'fuenor/qfixhowm'
-NeoBundle 'fuenor/qfixgrep'
-NeoBundle 'osyo-manga/unite-qfixhowm'
+call dein#add('hsitz/VimOrganizer')
+call dein#add('fuenor/qfixhowm')
+call dein#add('fuenor/qfixgrep')
+call dein#add('osyo-manga/unite-qfixhowm')
 
-" NeoBundle 'VimOutliner' " It introduces smart paste, although it is not smart in Haskell source
-NeoBundle 'VOoM'
-NeoBundle 'WOIM.vim'
+" call dein#add('VimOutliner') " It introduces smart paste, although it is not smart in Haskell source
+call dein#add('VOoM')
+call dein#add('WOIM.vim')
 
 " CSV
-NeoBundle 'Align'
-NeoBundle 'csv.vim'
+call dein#add('Align')
+call dein#add('csv.vim')
 
 " Buffer
-NeoBundle 'NrrwRgn'
+call dein#add('NrrwRgn')
 
 " APL
-NeoBundle 'ngn/vim-apl'
+call dein#add('ngn/vim-apl')
 
 " Haskell
-NeoBundle 'dag/vim2hs'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'pbrisbin/html-template-syntax'
-NeoBundle 'eagletmt/neco-ghc'
-NeoBundle 'eagletmt/unite-haddock'
+call dein#add('dag/vim2hs')
+call dein#add('eagletmt/ghcmod-vim')
+call dein#add('pbrisbin/html-template-syntax')
+call dein#add('eagletmt/neco-ghc')
+call dein#add('eagletmt/unite-haddock')
 
 " JavaScript
-NeoBundle 'marijnh/tern_for_vim'
+call dein#add('marijnh/tern_for_vim')
 
 " Color Scheme
-NeoBundle 'altercation/vim-colors-solarized'
+call dein#add('altercation/vim-colors-solarized')
 
 " Language {{{
 " Greek
-NeoBundle 'na4zagin3/pgreek.vim'
-NeoBundle 'polytonic.utf-8.spl'
+call dein#add('na4zagin3/pgreek.vim')
+call dein#add('polytonic.utf-8.spl')
 
 " Japanese
-"NeoBundle 'tyru/skk.vim'
-" NeoBundle 'deton/tcvime'
-NeoBundle 'na4zagin3/tcvime'
+"call dein#add('tyru/skk.vim')
+" call dein#add('deton/tcvime')
+call dein#add('na4zagin3/tcvime')
 " Language }}}
+" Plugins }}}
 
-call neobundle#end()
+" Required:
+call dein#end()
 
+" Required:
 filetype plugin indent on
-syntax on
 
-let g:neocomplcache_enable_at_startup = 1
-" bundle }}}
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+" dein }}}
 " VimOrganizer {{{
 let g:org_command_for_emacsclient ='emacsclient'
 let g:org_agenda_select_dirs=["~/org"]
