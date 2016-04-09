@@ -412,6 +412,13 @@ set fileencoding=utf-8
 let &termencoding = &encoding
 set langmenu=ja_JP.utf-8
 " encoding }}}
+" {{{ keymap
+" Disable s and S
+nnoremap s <nop>
+nnoremap S <nop>
+vnoremap s <nop>
+nnoremap S <nop>
+" }}} keymap
 " TwitVim {{{
 if has("perl")
   let twitvim_enable_perl = 1
@@ -690,7 +697,10 @@ call dein#add('taglist.vim')
 call dein#add('ref.vim')
 call dein#add('The-NERD-tree')
 call dein#add('The-NERD-Commenter')
+
+" VCS: Git
 call dein#add('fugitive.vim')
+call dein#add('AndrewRadev/gapply.vim')
 
 call dein#add('thinca/vim-quickrun')
 call dein#add('thinca/vim-localrc')
@@ -786,9 +796,10 @@ augroup MyXML
 augroup END
 " XML }}}
 " NeoComplcache {{{
-if has('mac') && has('xim')
-  let g:neocomplcache_auto_completion_start_length = 3
-endif
+let g:neocomplete#enable_at_startup = 1
+" if has('mac') && has('xim')
+"   let g:neocomplcache_auto_completion_start_length = 3
+" endif
 " NeoComplcache }}}
 " {{{ config
 set background=dark
