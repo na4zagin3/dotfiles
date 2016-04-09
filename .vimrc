@@ -753,7 +753,8 @@ NeoBundle 'polytonic.utf-8.spl'
 
 " Japanese
 "NeoBundle 'tyru/skk.vim'
-NeoBundle 'deton/tcvime'
+" NeoBundle 'deton/tcvime'
+NeoBundle 'na4zagin3/tcvime'
 " Language }}}
 
 call neobundle#end()
