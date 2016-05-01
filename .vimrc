@@ -809,4 +809,7 @@ set mouse=a
 " XML {{{
 let g:xml_syntax_folding = 1
 " XML }}}
+" syntax {{{
+syntax on
+" syntax }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
