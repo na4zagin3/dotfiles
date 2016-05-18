@@ -240,6 +240,7 @@ augroup MyGroup
   autocmd BufNewFile,BufRead Tupfile :setfiletype tup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
   autocmd BufEnter *.md :syntax sync fromstart
+  autocmd BufNewFile,BufRead *.java,*.jsp :set expandtab sw=4
 augroup END
 " FileType }}}
 
@@ -344,7 +345,7 @@ nnoremap <silent> g,hm :call QFixMemoChEnv('main',     'time', '=')<CR>
 nnoremap <silent> g,ho :call QFixMemoChEnv('old',      'time', '=')<CR>
 nnoremap <silent> g,hn :call QFixMemoChEnv('main-mkd', 'time', '#')<CR>
 nnoremap <silent> g,hp :call QFixMemoChEnv('pc',       'time', '= [:pc]')<CR>
-nnoremap <silent> g,hw :call QFixMemoChEnv('work',     'day',  '=')<CR>
+nnoremap <silent> g,hw :call QFixMemoChEnv('work-mkd', 'time', '#')<CR>
 " howm }}}
 
 " QFixGrep {{{
