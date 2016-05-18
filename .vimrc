@@ -633,10 +633,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/home/mrty/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath^=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin(expand('/home/mrty/.vim/dein'))
+call dein#begin(expand('~/.vim/dein'))
 
 " Let dein manage dein
 " Required:
@@ -810,4 +810,7 @@ set mouse=a
 " XML {{{
 let g:xml_syntax_folding = 1
 " XML }}}
+" syntax {{{
+syntax on
+" syntax }}}
 " Copyright (C) 2007 KaoriYa/MURAOKA Taro
