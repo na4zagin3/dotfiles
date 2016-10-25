@@ -468,7 +468,8 @@ let g:pandoc_bibfiles=["$BIBLIO_DIR/computer.bib"]
 let tcvime_enable = 1
 if tcvime_enable
 if has('keymap')
-  let tcvime_keymap = 'tutcodep'
+  " let tcvime_keymap = 'tutcodep'
+  let tcvime_keymap = 'tutcodeo'
   set iminsert=0 imsearch=0
   imap <unique> <C-J> <Plug>TcvimeIEnableKeymap
   imap <silent> <unique> <C-L> <Plug>TcvimeIDisableKeymap

@@ -12,19 +12,12 @@ export PATH="${HOME}/usr/bin:${PATH}"
 if [ `uname` = "Darwin" ] ; then
   export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
   fpath=(/usr/local/share/zsh-completions $fpath)
-  export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
   export WINEPREFIX=~/.wine32
   export WINEARCH=win32
   export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
   eval `/usr/libexec/path_helper -s`
   export SHELL='/bin/zsh'
-  # For Homebrew python modules
-  if [ -d $(brew --prefix)/share/python ];then
-	export PATH="$(brew --prefix)/share/python:$PATH"
-  fi
-  if [ -d $(brew --prefix)/lib/python2.7/site-packages ];then
-	export PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH"
-  fi
+  export ANDROID_HOME=/usr/local/opt/android-sdk
 fi
 export PATH="${HOME}/.cabal/bin:${PATH}"
 export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
