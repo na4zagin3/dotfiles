@@ -72,3 +72,5 @@ set postponed="imaps://imap.gmail.com/[Gmail]/Drafts"
 set read_inc=100
 set header_cache="~/.mutt/cache/headers/"
 set message_cachedir="~/.mutt/cache/bodies/"
+
+source ~/.mutt/gpg.rc
