@@ -1,8 +1,15 @@
 ;;; -*-emacs-lisp-*- This file is automatically created
 (setq tcode-data-directory "/Users/mrty/tcode/")
-(setq tcode-default-input-method "japanese-TUT-Code")
 ; (setq tcode-key-layout "qwerty")
 (setq tcode-key-layout "qwerty-us-shift")
+
+(if t
+    (progn
+      (setq tcode-default-input-method "japanese-TUTO-Code")
+      (setq tcode-mazegaki-dictionary-name "mazegaki-trad.dic"))
+  (progn
+    (setq tcode-default-input-method "japanese-TUT-Code")
+    (setq tcode-mazegaki-dictionary-name "mazegaki.dic")))
 
 ;;; ●変数の設定
 ;; 起動時に T-Code で使うすべてのライブラリをロードする
