@@ -36,4 +36,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 [ -f ~/.zshkey ] && source ~/.zshkey
 [[ "$(hostname)" =~ ".*\.cad\.ce\.titech\.ac\.jp" ]] && export USERNAME="$USER"
 
+return 0
+
 # vim: ft=zsh :
