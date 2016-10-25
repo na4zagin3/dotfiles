@@ -241,6 +241,8 @@ augroup MyGroup
   autocmd BufReadCmd   *.epub      call zip#Browse(expand("<amatch>"))
   autocmd BufEnter *.md :syntax sync fromstart
   autocmd BufNewFile,BufRead *.java,*.jsp :set expandtab sw=4
+  " au BufRead,BufNewFile *.ts        setlocal filetype=typescript
+  au BufRead,BufNewFile *.ts        :setfiletype typescript
 augroup END
 " FileType }}}
 
@@ -709,6 +711,9 @@ call dein#add('thinca/vim-localrc')
 " C/C++
 call dein#add('justmao945/vim-clang')
 
+" TypeScript
+call dein#add('leafgarland/typescript-vim')
+call dein#add('clausreinke/typescript-tools.vim')
 
 " Web
 if version > 703
