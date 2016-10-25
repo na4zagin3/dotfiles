@@ -92,7 +92,7 @@
                    (loop for ls in '((23 . "（") (22 . "〔") (21 . "［") (20 . "【") (13 . "｛")
                                      )
                          for rs in '((26 . "）") (27 . "）") (28 . "］") (29 . "】") (16 . "｝"))
-                         do (princ (format "%s, %s\n" i x))
+                         ; do (princ (format "%s, %s\n" i x))
                          do (tcode-set-action-to-table (list 20 28 14 (car ls) 40) (cdr ls))
                          do (tcode-set-action-to-table (list 20 28 15 (car rs) 40) (cdr rs))
                          )
