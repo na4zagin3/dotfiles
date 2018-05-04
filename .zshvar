@@ -1,66 +1,7 @@
 
-# [ $TERM = 'vt100' ] && export TERM='xterm'
-export PATH="/usr/local/bin:$PATH"
-export PATH="/opt/bin:$PATH"
-export PATH="/opt/x10/bin:${PATH}"
-export PATH="/opt/hadoop/bin:${PATH}"
-export PATH="/opt/android-sdk-update-manager/tools:${HOME}/bin:${PATH}"
-export PATH="${HOME}/.npm/bin:${PATH}"
-export PATH="${HOME}/.cabal/bin:${PATH}"
-export PATH="${HOME}/usr/bin:${PATH}"
-# [ -d ${HOME}/opt/llvm/bin ] && export PATH="${HOME}/opt/llvm/bin:${PATH}"
-if [ `uname` = "Darwin" ] ; then
-  export LD_LIBRARY_PATH="/usr/lib:$LD_LIBRARY_PATH"
-  fpath=(/usr/local/share/zsh-completions $fpath)
-  export WINEPREFIX=~/.wine32
-  export WINEARCH=win32
-  export PATH="$PATH:/Applications/Android Studio.app/sdk/platform-tools"
-  eval `/usr/libexec/path_helper -s`
-  export SHELL='/bin/zsh'
-  export ANDROID_HOME=/usr/local/opt/android-sdk
-fi
-export PATH="${HOME}/.cabal/bin:${PATH}"
-export PATH="${HOME}/.gem/ruby/2.0.0/bin:${PATH}"
-export PATH="${HOME}/usr/bin:${PATH}"
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH="${HOME}/usr/lib:$LD_LIBRARY_PATH"
-export PATH="${HOME}/.local/bin:${PATH}"
-export LD_LIBRARY_PATH="${HOME}/.local/usr/lib:$LD_LIBRARY_PATH"
-
-setting-modelsim () {
-QUARTUS_DIR="${HOME}/altera/14.1/modelsim_ase"
-for product in . sopc_builder ; do
-  export PATH="${QUARTUS_DIR}/${product}/bin:${PATH}"
-done
-#export LD_LIBRARY_PATH="${QUARTUS_DIR}/linux64:$LD_LIBRARY_PATH"
-}
-
-setting-quartus () {
-QUARTUS_DIR="${HOME}/altera/15.1/quartus"
-for product in . sopc_builder ; do
-  export PATH="${QUARTUS_DIR}/${product}/bin:${PATH}"
-done
-export LD_LIBRARY_PATH="${QUARTUS_DIR}/linux64:$LD_LIBRARY_PATH"
-}
-
 export EDITOR='vim'
 export STOW_DIR='/var/lib/stow'
 
-[ -f ~/.vars-x10 ] && source ~/.vars-x10
-[ -f ~/.zshvar-audio ] && source ~/.zshvar-audio
-if [ -e /home/noriakis/.nix-profile/etc/profile.d/nix.sh ]; then source /home/noriakis/.nix-profile/etc/profile.d/nix.sh ; fi # added by Nix installer
-if [ -e /home/noriakis/mips-elf ]; then
-  export PATH="${PATH}:/home/noriakis/mips-elf/bin"
-fi
-if [ -e /home/noriakis/gentoo ]; then
-#if false; then
-	export EPREFIX="$HOME/gentoo"
-	export PATH="$EPREFIX/usr/bin:$EPREFIX/bin:$EPREFIX/tmp/usr/bin:$EPREFIX/tmp/bin:${PATH}"
-	export DISTCC_LOG="$EPREFIX/var/log/distcc.log"
-	export DISTCC_TCP_CORK=0
-fi
-if [ -e /home/noriakis ]; then
-  export PATH="${PATH}:/home/noriakis/opt/llvm/bin"
-fi
+export PATH="${HOME}/.local/bin:${PATH}"
 
 [ -f ~/opam/opam-init/init.zsh ] &&  ~/opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
