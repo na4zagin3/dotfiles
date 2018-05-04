@@ -811,7 +811,6 @@ let g:neocomplete#enable_at_startup = 1
 " {{{ config
 set background=dark
 colorscheme koehler
-set mouse=a
 " }}} config
 " XML {{{
 let g:xml_syntax_folding = 1
