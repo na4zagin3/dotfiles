@@ -1,4 +1,7 @@
 
 export EDITOR='vim'
 export STOW_DIR='/var/lib/stow'
+
 export PATH="${HOME}/.local/bin:${PATH}"
+
+[ -f ~/opam/opam-init/init.zsh ] &&  ~/opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

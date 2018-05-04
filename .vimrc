@@ -669,7 +669,7 @@ call dein#add('rbonvall/vim-textobj-latex')
 " }}} Operator/TextObjects
 
 " Colorscheme
-" call dein#add('CSApprox')
+" call dein#add('vim-scripts/CSApprox')
 
 " Markdown
 call dein#add('hallison/vim-markdown')
@@ -677,7 +677,7 @@ call dein#add('vim-pandoc/vim-pandoc')
 call dein#add('vim-pandoc/vim-pandoc-syntax')
 
 " Modeline
-call dein#add('Modeliner')
+call dein#add('vim-scripts/Modeliner')
 
 " Binary Edigor
 call dein#add('Shougo/vinarise')
@@ -696,18 +696,18 @@ call dein#add('Shougo/vimfiler')
 call dein#add('Shougo/vimshell')
 
 " File
-" call dein#add('ctrlp.vim')
+" call dein#add('vim-scripts/ctrlp.vim')
 
 " ???
 call dein#add('ujihisa/unite-locate')
 " call dein#add('violetyk/cake.vim')
-call dein#add('taglist.vim')
-call dein#add('ref.vim')
-call dein#add('The-NERD-tree')
-call dein#add('The-NERD-Commenter')
+call dein#add('vim-scripts/taglist.vim')
+call dein#add('vim-scripts/ref.vim')
+call dein#add('vim-scripts/The-NERD-tree')
+call dein#add('vim-scripts/The-NERD-Commenter')
 
 " VCS: Git
-call dein#add('fugitive.vim')
+call dein#add('vim-scripts/fugitive.vim')
 call dein#add('AndrewRadev/gapply.vim')
 
 call dein#add('thinca/vim-quickrun')
@@ -722,11 +722,11 @@ call dein#add('clausreinke/typescript-tools.vim')
 
 " Web
 if version > 703
-  call dein#add('TwitVim')
+  call dein#add('vim-scripts/TwitVim')
 endif
 
-" call dein#add('rails.vim')
-call dein#add('Gist.vim')
+" call dein#add('vim-scripts/rails.vim')
+call dein#add('vim-scripts/Gist.vim')
 call dein#add('motemen/hatena-vim')
 
 call dein#add('jelera/vim-javascript-syntax')
@@ -738,15 +738,15 @@ call dein#add('fuenor/qfixgrep')
 call dein#add('osyo-manga/unite-qfixhowm')
 
 " call dein#add('VimOutliner') " It introduces smart paste, although it is not smart in Haskell source
-call dein#add('VOoM')
-call dein#add('WOIM.vim')
+call dein#add('vim-scripts/VOoM')
+call dein#add('vim-scripts/WOIM.vim')
 
 " CSV
-call dein#add('Align')
-call dein#add('csv.vim')
+call dein#add('vim-scripts/Align')
+call dein#add('vim-scripts/csv.vim')
 
 " Buffer
-call dein#add('NrrwRgn')
+call dein#add('vim-scripts/NrrwRgn')
 
 " APL
 call dein#add('ngn/vim-apl')
@@ -767,7 +767,7 @@ call dein#add('altercation/vim-colors-solarized')
 " Language {{{
 " Greek
 call dein#add('na4zagin3/pgreek.vim')
-call dein#add('polytonic.utf-8.spl')
+call dein#add('vim-scripts/polytonic.utf-8.spl')
 
 " Japanese
 "call dein#add('tyru/skk.vim')
