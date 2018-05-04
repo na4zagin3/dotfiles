@@ -62,3 +62,5 @@ fi
 if [ -e /home/noriakis ]; then
   export PATH="${PATH}:/home/noriakis/opt/llvm/bin"
 fi
+
+[ -f ~/opam/opam-init/init.zsh ] &&  ~/opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
