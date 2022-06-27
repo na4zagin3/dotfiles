@@ -395,24 +395,6 @@ set runtimepath+=$PLUGINROOT/minscm
 " MinSCM }}}
 
         
-" gtags {{{
-:nmap <C-\><C-]> :GtagsCursor<CR>
-" gtags }}}
-
-" binary {{{
-" vim -b : edit binary using xxd-format!
-"augroup Binary
-"  au!
-"  au BufReadPre  *.bin let &bin=1
-"  au BufReadPost *.bin if &bin | silent %!xxd -g 1
-"  au BufReadPost *.bin set ft=xxd | endif
-"  au BufWritePre *.bin if &bin | %!xxd -r
-"  au BufWritePre *.bin endif
-"  au BufWritePost *.bin if &bin | silent %!xxd -g 1
-"  au BufWritePost *.bin set nomod | endif
-"augroup END
-" binary }}}
-
 " encoding {{{
 set encoding=utf-8
 set fileencoding=utf-8
@@ -426,41 +408,13 @@ nnoremap S <nop>
 vnoremap s <nop>
 nnoremap S <nop>
 " }}} keymap
-" TwitVim {{{
-if has("perl")
-  let twitvim_enable_perl = 1
-endif
-if has("python")
-  let twitvim_enable_python = 1
-endif
-if has("ruby")
-  let twitvim_enable_ruby = 1
-endif
-if has("tcl")
-  let twitvim_enable_tcl = 1
-endif
-
-
-" TwitVim }}}
-" haskell mode {{{
-" use ghc functionality for haskell files
-augroup MyHaskell
-  " au Bufenter *.hs,*.lhs compiler ghc
-  au BufRead,BufNewFile *.hs setl sw=2 expandtab
-  au BufRead,BufNewFile *.lhs setl sw=2 expandtab
-  au BufRead,BufNewFile *.cabal setl sw=2 expandtab
-  au BufWritePost *.hs :GhcModCheckAndLintAsync
-  au BufRead,BufNewFile *.hamlet  setf hamlet | setl expandtab
-  au BufRead,BufNewFile *.cassius setf cassius | setl expandtab
-  au BufRead,BufNewFile *.lucius  setf lucius | setl expandtab
-  au BufRead,BufNewFile *.julius  setf julius | setl expandtab
-augroup END
-" configure browser for haskell_doc.vim
-let g:haddock_browser = "chromium"
-"let g:haddock_browser = "C:/Program Files/Opera/Opera.exe"
-"let g:haddock_browser = "C:/Program Files/Mozilla Firefox/firefox.exe"
-"let g:haddock_browser = "C:/Program Files/Internet Explorer/IEXPLORE.exe"
-" haskell mode }}}
+" vim-exchange {{{
+" To align with evil-exchange
+nmap gx <Plug>(Exchange)
+xmap X <Plug>(Exchange)
+nmap gX <Plug>(ExchangeClear)
+nmap gxx <Plug>(ExchangeLine)
+" vim-exchange }}}
 " Align {{{
 " Alignを日本語環境で使用するための設定
 let g:Align_xstrlen = 3
@@ -592,25 +546,6 @@ function TcvimeCustomKeymap()
 endfunction
 endif
 " tcvime }}}
-" unite {{{
-" The prefix key.
-nnoremap    [unite]   <Nop>
-nmap <unique> <Leader>f [unite]
-
-" unite.vim keymap
-" https://github.com/alwei/dotfiles/blob/3760650625663f3b08f24bc75762ec843ca7e112/.vimrc
-nnoremap [unite]u  :<C-u>Unite -no-split<Space>
-nnoremap <silent> [unite]f :<C-u>Unite<Space>buffer<CR>
-nnoremap <silent> [unite]b :<C-u>Unite<Space>bookmark<CR>
-nnoremap <silent> [unite]m :<C-u>Unite<Space>file_mru<CR>
-nnoremap <silent> [unite]r :<C-u>UniteWithBufferDir file<CR>
-nnoremap <silent> [unite]vr :UniteResume<CR>
-
-" unite-build map
-"nnoremap <silent> ,vb :Unite build<CR>
-"nnoremap <silent> ,vcb :Unite build:!<CR>
-"nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
-" unite }}}
 " vinarise {{{
 let g:vinarise_enable_auto_detect = 0
 let g:vinarise_detect_large_file_size = 0
@@ -627,13 +562,6 @@ let g:operator#surround#blocks = {
     \ ] }
 " }}} vim-operator-surround
 
-" vim-clang {{{
-" set clang options for vim-clang
-let g:clang_c_options = '-std=c11'
-let g:clang_cpp_options = '-std=c++1z -stdlib=libc++ --pedantic-errors'
-" let g:clang_cpp_options = g:clang_cpp_options . ' ' . system('pkg-config libxml++-2.6 --cflags')
-let g:clang_diagsopt = 'rightbelow:6'
-" vim-clang }}}
 " dein {{{
 if &compatible
   set nocompatible               " Be iMproved
@@ -661,11 +589,14 @@ call dein#add('Shougo/dein.vim')
 call dein#add('kana/vim-operator-user')
 call dein#add('kana/vim-textobj-user')
 
-call dein#add('rhysd/vim-operator-surround')
-" call dein#add('tpope/vim-surround')
+call dein#add('michaeljsmith/vim-indent-object')
 
 " Operator/TextObjects: LaTeX
 call dein#add('rbonvall/vim-textobj-latex')
+
+" Operator/Operations
+call dein#add('tpope/vim-surround')
+call dein#add('tommcdo/vim-exchange')
 " }}} Operator/TextObjects
 
 " Colorscheme
@@ -710,20 +641,9 @@ call dein#add('vim-scripts/The-NERD-Commenter')
 call dein#add('vim-scripts/fugitive.vim')
 call dein#add('AndrewRadev/gapply.vim')
 
-call dein#add('thinca/vim-quickrun')
-call dein#add('thinca/vim-localrc')
-
-" C/C++
-call dein#add('justmao945/vim-clang')
-
 " TypeScript
 call dein#add('leafgarland/typescript-vim')
 call dein#add('clausreinke/typescript-tools.vim')
-
-" Web
-if version > 703
-  call dein#add('vim-scripts/TwitVim')
-endif
 
 " call dein#add('vim-scripts/rails.vim')
 call dein#add('vim-scripts/Gist.vim')
@@ -747,19 +667,6 @@ call dein#add('vim-scripts/csv.vim')
 
 " Buffer
 call dein#add('vim-scripts/NrrwRgn')
-
-" APL
-call dein#add('ngn/vim-apl')
-
-" Haskell
-call dein#add('dag/vim2hs')
-call dein#add('eagletmt/ghcmod-vim')
-call dein#add('pbrisbin/html-template-syntax')
-call dein#add('eagletmt/neco-ghc')
-call dein#add('eagletmt/unite-haddock')
-
-" JavaScript
-call dein#add('marijnh/tern_for_vim')
 
 " Color Scheme
 call dein#add('altercation/vim-colors-solarized')
